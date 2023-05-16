@@ -8,7 +8,7 @@ const Main = () => {
         <h1 className=" mt-[250px] font-bold text-[40px] leading-47 w-388 h-94  ">
           Your favorite comic book store
         </h1>
-        <p className=" mt-2 pl-2 font-normal w-[400px] text-[16px]  leading-[19px] ">
+        <p className=" mt-2 pl-2 font-normal w-400px text-[16px] leading-19px ">
           From classics to novelties, we have everything you need to immerse
           yourself in your favorite universes. Explore our catalog and live the
           adventure of your life.
@@ -17,6 +17,7 @@ const Main = () => {
           Started
         </button>
       </div>
+      
   )
 }
 

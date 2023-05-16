@@ -7,7 +7,8 @@ module.exports = {
   theme: {
       extend: {
         backgroundImage:{
-          'main-home':'url(../../src/assets/branden-sk.jpg'
+          'main-home':'url(../../src/assets/branden-sk.jpg',
+          'nav-home':'url(../../src/assets/images/Nav mobile.png'
         },
         colors:{
           primary:{

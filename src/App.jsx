@@ -11,9 +11,8 @@ function App() {
       <div className=" bg-[url('../../src/assets/branden-sk.jpg')] bg-cover bg-repeat-x  bg-center absolute h-screen w-screen top-0 left-0 " >
      <Navbar/>
      <Main/>
-     {/* <Footer/> */}
+     <Footer/>
       </div>
-     
     </>
   )
 }
