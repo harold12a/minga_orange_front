@@ -1,9 +1,15 @@
 import React from 'react'
+import {
+  RiArrowRightLine,
+  RiArrowLeftLine,
+} from "react-icons/ri";
 
 
 
 const Main = () => {
   return (
+    <>
+    <div>
     <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center ">
         <h1 className=" mt-[200px] font-bold text-[40px] leading-47 w-388 h-94 xl:mt-[90px]  ">
           Your favorite comic book store
@@ -22,6 +28,37 @@ const Main = () => {
   Let´s go!
 </button>
       </div>
+      <div className="bottom-0  mt-[390px] hidden xl:block overflow-x-hidden">    
+          <div className="h-[200px] mx-auto w-[90%]  bg-[#4338CA] mb-[30px] rounded-[5px] relavite">
+             <h1 className=" absolute text-white pl-[50%] pt-[3%]" >Shonen:</h1>
+            <p className="absolute text-white pr-[18%] pl-[50%] pt-[5%] mb-3">
+              Is the manga that is aimed at adolescent boys. They are series
+              with large amounts of action, in which humorous situations often
+              occur. The camaraderie between members of a collective or a combat
+              team stands out.
+            </p>
+            <img
+              src="../../src/assets/images/29eba99.png"
+              alt=""
+              className="absolute top-[765px] left-[130px] h-64 w-64"
+            />
+            <img
+              src="../../src/assets/images/image3.png"
+              alt=""
+              className="absolute top-[765px] left-[440px] h-[200px] w-[140px]"
+            />
+            <button className="absolute bg-slate-300 rounded-[50px]  ml-[85%] mt-[6%]  ">
+              <RiArrowRightLine />
+            </button>
+            <button className="absolute bg-slate-300 rounded-[50px] ml-[2.5%] mt-[6%]  ">
+              <RiArrowLeftLine />
+            </button>
+           </div> 
+        </div>  
+
+    </div>
+    
+      </>
       
   )
 }
