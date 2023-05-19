@@ -7,7 +7,9 @@ module.exports = {
   theme: {
       extend: {
         backgroundImage:{
-          'main-home':'url(../../src/assets/branden-sk.jpg'
+          'main-home':'url(../../src/assets/branden-sk.jpg',
+          'nav-home':'url(../../src/assets/images/Nav mobile.png',
+          'desktop':'url(../../src/assets/branden-desktop.png'
         },
         colors:{
           primary:{
@@ -17,5 +19,7 @@ module.exports = {
       }
   },
   variants: {},
-  plugins: []
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ]
 }
