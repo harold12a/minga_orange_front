@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 
 
 
-// bg-cove
 
 function App() {
   return (

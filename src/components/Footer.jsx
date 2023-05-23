@@ -24,10 +24,19 @@ const Footer = () => {
           <button className=" text-4xl  text-white">
             <RiYoutubeFill />
           </button>
-          </div> 
+          </div>
+          <div className="bottom-0   hidden xl:block overflow-x-hidden    ">
          
-      
-         
+          {/* <img src="../../src/assets/images/Rectangle14.png" alt="" className=" rounded-b-[50%]    mx-auto w-full  " />
+           */}
+          <img src="../../src/assets/images/Rectangle14.png" alt="" className="mx-auto w-full" style={{  borderRadius: '0 0 140% 140%' }} />
+
+
+          {/* <div className=" h-[200px] mx-auto w-full  bg-[#4338CA] mb-[30px] rounded-[5px]  "> */}
+          <div className=" h-[200px] mx-auto w-full  mb-[30px]    overflow-hidden "> 
+        
+           </div>
+        </div>        
         </footer>
     </>
   );
