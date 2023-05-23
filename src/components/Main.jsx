@@ -1,5 +1,13 @@
 import React from "react";
-import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri";
+import {
+  RiArrowRightLine,
+  RiArrowLeftLine,
+  RiFacebookBoxFill,
+  RiTwitterFill,
+  RiYoutubeFill,
+  RiVimeoFill,
+  RiHeartLine,
+} from "react-icons/ri";
 
 const Main = () => {
   return (
@@ -51,7 +59,25 @@ const Main = () => {
               <RiArrowLeftLine />
             </button>
           </div>
-    
+          {/* <div className="flex  ">
+            <a href="" className="mr-[1%] ml-[15%] mt-[30%] absolute" >home</a>
+            <a href="" className="ml-[20%] mt-[30%] absolute">mangas</a>
+            <img
+              src="../../src/assets/images/Frame 34648.png"
+              alt=""
+              className=" absolute mx-auto  left-[45%] mt-[30%]   "
+            />
+            
+            <div className="flex ml-[75%] mt-[30%] absolute">
+              <RiFacebookBoxFill className="flex w-[40px] " />
+              <RiTwitterFill className="flex w-[40px] "/>
+              <RiVimeoFill className="flex w-[40px] "/>
+              <RiYoutubeFill className="flex w-[40px] "/>
+            </div>
+            <button className=" flex text-white items-center ml-[73%] mt-[32%] w-[15%] h-10 px-[80px] bg-[#5E52F3] rounded-[50px] absolute ">
+              Donate <RiHeartLine/>
+            </button>
+          </div> */}
         </div>
       </div>
     </>
