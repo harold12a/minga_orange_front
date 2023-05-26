@@ -17,7 +17,7 @@ const Footer = () => {
           <img
             src="../../src/assets/images/Frame 34648.png"
             alt=""
-            className=" mx-auto pb-[50px]     "
+            className=" mx-auto pb-[50px] "
           />
          <div className=" absolute pb-[7px]   inset-x-0 flex  items-center gap-x-4 md:flex md:ml-[50%]  justify-center  xl:hidden   ">
           <button className=" text-4xl  text-black">
@@ -34,7 +34,6 @@ const Footer = () => {
           </button>
           </div>
         </div>
-
         <div className="bottom-0   hidden xl:block overflow-x-hidden    ">
           <img
             src="../../src/assets/images/Rectangle14.png"
