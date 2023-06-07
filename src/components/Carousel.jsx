@@ -23,16 +23,27 @@ const Carousel = () => {
   const [counter, setCounter] = useState(0);
 
   const next = () => {
-    setCounter(counter + 1);
+    if (counter === categories.length - 1) {
+      setCounter(0);
+    } else {
+      setCounter(counter + 1);
+    }
     console.log(counter);
   };
+  
   const prev = () => {
-    setCounter(counter - 1);
+    if (counter === 0) {
+      setCounter(categories.length - 1);
+    } else {
+      setCounter(counter - 1);
+    }
     console.log(counter);
   };
+  
   return (
     <div className="bottom-0  mt-[390px] hidden xl:block overflow-x-hidden">
-      <div className="h-[200px] mx-auto w-[90%]  bg-[#4338CA] mb-[30px] rounded-[5px] relavite">
+      <div className="h-[200px] mx-auto w-[90%]  mb-[30px] rounded-[5px] relavite" style={{ backgroundColor: categories[counter]?.color }}>
+      
         <h1 className=" absolute text-white pl-[50%] pt-[3%]">{categories[counter]?.name}</h1>
         <p className="absolute text-white pr-[18%] pl-[50%] pt-[5%] mb-3">
           {categories[counter]?.description}
