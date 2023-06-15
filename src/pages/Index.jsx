@@ -1,27 +1,27 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
 import Carousel from "../components/Carousel";
 import Welcome from "../components/Welcome";
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+import SingIn from '../pages/SingIn'
 
 const Index = () => {
-  let data = [{
-    name: "Shonen:",
-    description:"Is the manga that is aimed at adolescent boys. They are series with large amounts of action, in which humorous situations often occur. The camaraderie between members of a collective or a combat team stands out.",
-    character_photo: "../../src/assets/images/29eba99.png",
-    cover_photo: "../../src/assets/images/image3.png",
-  }];
-      return (
-        <>
-          <div>
-            <Welcome />
-            <Carousel
-              character_photo={data[0].character_photo}
-              cover_photo={data[0].cover_photo}
-              name={data[0].name}
-              description={data[0].description}
-            />
-          </div>
-        </>
-  )
-}
+  const [changeView, setChangeView] = useState(false);
+  return (
 
-export default Index
+        changeView ? (
+          <SingIn changeView={changeView} setChangeView={setChangeView}/>
+        ) : (
+
+            <main className=" bg-[url('../../src/assets/branden-sk.jpg')] bg-cover bg-repeat-x  bg-center absolute h-screen w-full top-0 left-0 xl:bg-[url('../../src/assets/branden-desktop.png')] "> 
+            <Navbar/>
+            <Welcome changeView={changeView} setChangeView={setChangeView} />
+            <Carousel />
+            <Footer/>
+             </main>
+        )
+  )
+};
+
+export default Index;
