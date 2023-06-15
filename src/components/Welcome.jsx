@@ -19,7 +19,7 @@ const Welcome = ({changeView, setChangeView}) => {
     <button className="mt-7 mx-auto w-72 xl:w-363 h-14 xl:h-68 bg-[#4338CA] rounded-[50000px] block xl:hidden">
       Started
     </button>
-    <Anchor to='/singin' className="mt-10  mx-auto w-72 xl:w-363 h-14 xl:h-68 bg-[#4338CA] rounded-[50000px] hidden xl:block">
+    <Anchor to='/singin' className="mt-10 pt-[15px]  mx-auto w-72 xl:w-363 h-14 xl:h-68 bg-[#4338CA] rounded-[50000px] hidden xl:block">
       Let´s go!
     </Anchor>
     </div>
