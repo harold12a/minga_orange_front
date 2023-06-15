@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link as Anchor } from 'react-router-dom'
 
-const Welcome = () => {
+const Welcome = ({changeView, setChangeView}) => {
   return (
-    <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center ">
+    <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center mt-[240px] ">
     <h1 className=" mt-[200px] font-bold text-[40px] leading-47 w-388 h-94 xl:mt-[90px]  ">
       Your favorite comic book store
     </h1>
@@ -18,10 +19,11 @@ const Welcome = () => {
     <button className="mt-7 mx-auto w-72 xl:w-363 h-14 xl:h-68 bg-[#4338CA] rounded-[50000px] block xl:hidden">
       Started
     </button>
-    <button className="mt-7 mx-auto w-72 xl:w-363 h-14 xl:h-68 bg-[#4338CA] rounded-[50000px] hidden xl:block">
+    <Anchor to='/singin' className="mt-10  mx-auto w-72 xl:w-363 h-14 xl:h-68 bg-[#4338CA] rounded-[50000px] hidden xl:block">
       Let´s go!
-    </button>
+    </Anchor>
     </div>
+    
   )
 }
 
