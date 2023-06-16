@@ -1,7 +1,34 @@
 import React from "react";
-import { Link as Anchor } from "react-router-dom";
+import { Link as Anchor , useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const SingIn = () => {
+
+  const navigate = useNavigate()
+  const singin =()=>{
+
+    // try {
+    //   await axios.post('url');
+    //   navigate('/');
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+setTimeout(()=>navigate('/'),2000)
+
+ let data = {
+  email: email.current.value,
+  password: password.current.value
+ }
+ console.log(data);
+
+ // esta es la misma informacion del backend
+  }
+
+  const email = useRef()
+  const password = useRef()
+
+
   return (
     <main className="flex w-full h-full items-center justify-between ">
       <img
@@ -24,6 +51,7 @@ const SingIn = () => {
             name="email"
             id="email"
             placeholder="Email"
+            ref={email}
           />
           <input
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
@@ -31,11 +59,14 @@ const SingIn = () => {
             name="password"
             id="password"
             placeholder="Password"
+            ref={password}
           />
           <input
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-xl text-white rounded-lg bg-gradient-to-r from-[#4338CA] to-[#4338CA]"
             type="button"
             value="Sign in"
+            onClick={singin}
+
           />
           <div className="relative">
             <input
@@ -48,7 +79,7 @@ const SingIn = () => {
             <img
               src="../../src/assets/images/Google.png"
               alt="google"
-              className="absolute right-[310px] top-[30px] w-[22px] hidden lg:block"
+              className="absolute right-[310px] top-[24px] w-[22px] hidden lg:block"
             />
           </div>
         </form>
