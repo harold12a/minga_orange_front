@@ -12,6 +12,7 @@ const Navbar = () => {
     { to:'/', title:'Home'},
     {to:'/register', title: 'Regiter'},
     {to:'/singin ',title: 'Sing In'}
+
   ]
 
 
