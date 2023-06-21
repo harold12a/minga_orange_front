@@ -11,8 +11,8 @@ const Navbar = () => {
   let options = [
     { to:'/', title:'Home'},
     {to:'/register', title: 'Regiter'},
-    {to:'/singin ',title: 'Sing In'}
-
+    {to:'/singin ',title: 'Sing In'},
+    {to:'/AuthorForm ',title: 'New Author'}
   ]
 
 
