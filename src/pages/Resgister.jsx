@@ -1,7 +1,26 @@
 import React from "react";
-import { Link as Anchor } from "react-router-dom";
+import { Link as Anchor, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const Resgister = () => {
+  const navigate = useNavigate()
+
+  const singup = ()=>{
+
+    setTimeout(()=>navigate('/singin'),2000)
+
+    let data = {
+      email: email.current.value,
+      password: password.current.value,
+      photo: photo.current.value
+     }
+     console.log(data);
+  }
+
+  const email = useRef()
+  const password = useRef()
+  const photo = useRef()
+
   return (
     <main className="flex w-full min-h-screen items-center justify-between">
       <div className="flex flex-col md:absolute md:top-0 md:right-[50%] justify-center items-center h-screen w-full md:w-[50%]">
@@ -17,6 +36,7 @@ const Resgister = () => {
             name="email"
             id="email"
             placeholder="Email"
+            ref={email}
           />
           <input
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
@@ -24,6 +44,7 @@ const Resgister = () => {
             name="photo"
             id="Photo"
             placeholder="Photo"
+            ref={photo}
           />
           <input
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
@@ -31,14 +52,15 @@ const Resgister = () => {
             name="password"
             id="password"
             placeholder="Password"
+            ref={password}
           />
-          <div class="flex items-center">
+          <div className="flex items-center">
             <input
               type="checkbox"
               id="myCheckbox"
-              class="form-checkbox text-indigo-600 h-5 w-5"
+              className="form-checkbox text-indigo-600 h-5 w-5"
             />
-            <label for="myCheckbox" class="ml-2 text-gray-700">
+            <label id="myCheckbox" className="ml-2 text-gray-700">
               Send notificacion to my email
             </label>
           </div>
@@ -46,6 +68,7 @@ const Resgister = () => {
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-xl text-white rounded-lg bg-gradient-to-r from-[#4338CA] to-[#4338CA]"
             type="button"
             value="Sign up"
+            onClick={singup}
           />
           <div className="relative">
             <input
