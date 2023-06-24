@@ -41,8 +41,8 @@ const Carousel = () => {
   };
   
   return (
-    <div className="bottom-0  mt-[590px] hidden xl:block overflow-x-hidden">
-      <div className="h-[200px] mx-auto w-[90%]  mb-[30px] rounded-[5px] relavite" style={{ backgroundColor: categories[counter]?.color }}>
+    <div className="bottom-0  mt-[460px] hidden xl:block overflow-x-hidden">
+      <div className="h-[250px] mx-auto w-[90%]  mb-[30px] rounded-[5px] relavite" style={{ backgroundColor: categories[counter]?.color }}>
       
         <h1 className=" absolute text-white pl-[50%] pt-[3%]">{categories[counter]?.name}</h1>
         <p className="absolute text-white pr-[18%] pl-[50%] pt-[5%] mb-3">
@@ -51,13 +51,13 @@ const Carousel = () => {
         <img
           src={categories[counter]?.character_photo}
           alt=""
-          className="absolute top-[970px] left-[130px] h-64 w-64"
+          className="absolute top-[1030px] left-[150px] h-64 w-64"
         />
 
         <img
           src={categories[counter]?.cover_photo}
           alt=""
-          className="absolute top-[980px] left-[440px] h-[200px] w-[140px]"
+          className="absolute top-[1020px] left-[440px] h-[250px] w-[180px]"
         />
         <button className="absolute bg-slate-300 rounded-[50px]  ml-[85%] mt-[6%] ">
           <RiArrowRightLine d={d_left} onClick={next} />
