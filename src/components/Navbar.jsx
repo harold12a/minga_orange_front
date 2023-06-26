@@ -12,6 +12,7 @@ const Navbar = () => {
     { to:'/', title:'Home'},
     {to:'/register', title: 'Regiter'},
     {to:'/singin ',title: 'Sing In'},
+    {to:'/formNewMangas', title:'New Managa'},
     {to:'/AuthorForm ',title: 'New Author'},
     {to:'/ChapterForm ',title: 'New Chapter'}
   ]
