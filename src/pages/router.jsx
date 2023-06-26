@@ -5,7 +5,8 @@ import SingIn from "./SingIn";
 import Resgister from "./Resgister";
 import FormNewMangas from "./FormNewMangas";
 import AuthorForm from "./AuthorForm.jsx";
-import ChapterForm from "../components/ChapterForm";
+import ChapterForm from "./ChapterForm";
+
 
 
 const router = createBrowserRouter([
