@@ -15,6 +15,7 @@ const Navbar = () => {
     {to:'/formNewMangas', title:'New Managa'},
     {to:'/AuthorForm ',title: 'New Author'},
     {to:'/ChapterForm ',title: 'New Chapter'}
+
   ]
 
 
