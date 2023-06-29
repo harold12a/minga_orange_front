@@ -12,7 +12,7 @@ const Navbar = () => {
     { to:'/', title:'Home'},
     {to:'/register', title: 'Regiter'},
     {to:'/singin ',title: 'Sing In'},
-    {to:'/AuthorForm ',title: 'New Author'}
+    {to:'/AuthorForm ',title: 'New Author'},
   ]
 
 
