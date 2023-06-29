@@ -12,7 +12,10 @@ const Navbar = () => {
     { to:'/', title:'Home'},
     {to:'/register', title: 'Regiter'},
     {to:'/singin ',title: 'Sing In'},
+    {to:'/formNewMangas', title:'New Managa'},
     {to:'/AuthorForm ',title: 'New Author'},
+    {to:'/ChapterForm ',title: 'New Chapter'}
+
   ]
 
 
@@ -21,7 +24,7 @@ const Navbar = () => {
     
     {show && <Display options={options} show={show} setShow={setShow} />  }
       <div className="flex-none order-1 flex-grow-0 w-54 h-32 flex w-full absolute z-10  ">
-        <div className="w-full absolute flex justify-between items-center p-2 ">
+        <div className="w-full absolute flex justify-between items-center p-2 xl:p-[25px] ">
           <RiMenuLine
             onClick={() => setShow(!show)}
             className="w-8 h-8 fill-current text-indigo-700 xl:text-black  "

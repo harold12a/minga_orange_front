@@ -38,7 +38,7 @@ const Footer = () => {
           <img
             src="../../src/assets/images/Rectangle14.png"
             alt=""
-            className="mx-auto w-full"
+            className="mx-auto w-[90%]"
             style={{ borderRadius: "0 0 140% 140%" }}
           />
 

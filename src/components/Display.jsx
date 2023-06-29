@@ -11,7 +11,7 @@ const Display = ({ options, show, setShow }) => {
 
   return (
     <>
-      <nav className="bg-blue-600 absolute z-20 top-0 left-0 h-full w-full  xl:w-[300px] flex flex-col  ">
+      <nav className="bg-blue-600 fixed z-20 top-0 left-0 h-screen w-full  xl:w-[356px] flex flex-col  ">
         <div className="text-white flex justify-around mt-2 ">
         
           <img src="../../src/assets/images/Rectangle 10.svg" alt="" />
