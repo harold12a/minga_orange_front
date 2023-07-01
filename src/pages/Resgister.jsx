@@ -3,11 +3,9 @@ import { Link as Anchor, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
 const Resgister = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const singup = ()=>{
-
-    setTimeout(()=>navigate('/singin'),2000)
+  const singin = ()=>{
 
     let data = {
       email: email.current.value,
@@ -15,6 +13,7 @@ const Resgister = () => {
       photo: photo.current.value
      }
      console.log(data);
+     setTimeout(()=>navigate('/'),2000)
   }
 
   const email = useRef()
@@ -68,7 +67,7 @@ const Resgister = () => {
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-xl text-white rounded-lg bg-gradient-to-r from-[#4338CA] to-[#4338CA]"
             type="button"
             value="Sign up"
-            onClick={singup}
+            onClick={singin}
           />
           <div className="relative">
             <input
