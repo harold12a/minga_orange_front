@@ -3,29 +3,29 @@ import { Link as Anchor } from "react-router-dom";
 import { useRef } from "react";
 import axios from "axios";
 import apiUrl from '../apiUrl.js'
+import Swal from "sweetalert2";
 
 const SingIn = () => {
-  const singin = async () => {
+  const login = async () => {
     let data = {
       email: email.current.value,
       password: password.current.value,
-    };
+    }
 
     try {
-      const response = await axios.post(apiUrl + "auth/signin", data).then((res) => res.data);  
+      const response = await axios.post(apiUrl + "auth/singin", data).then(res => res.data);  
       if (response.success) {
-        alert("user signed in!");
-        localStorage.setItem("token", response.response.token);
-        localStorage.setItem("user", JSON.stringify(response.response.user));
+       Swal.fire({icon: "success"});
+        localStorage.setItem('token', response.response.token);
+        localStorage.setItem('user', JSON.stringify(response.response.user));
         setTimeout(() => window.location.replace("/"), 1000);
-      } else {
-        alert("error !");
-      }
+      } 
     } catch (error) {
       console.log(error);
-      alert("error !");
+      Swal.fire({icon: "error"})
     }
   };
+
 
   const email = useRef();
   const password = useRef();
@@ -70,7 +70,7 @@ const SingIn = () => {
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-xl text-white rounded-lg bg-gradient-to-r from-[#4338CA] to-[#4338CA]"
             type="button"
             value="Sign in"
-            onClick={singin}
+            onClick={login}
           />
           <div className="relative">
             <input
