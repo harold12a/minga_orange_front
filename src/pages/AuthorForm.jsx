@@ -4,6 +4,7 @@ import profile1 from "../assets/images/profile.png";
 import apiUrl from "../apiUrl";
 import axios from "axios"
 import ButtonSend from "../components/ButtonSend";
+import Swal from "sweetalert2";
 
 export default function AuthorForm(){
 
@@ -38,7 +39,7 @@ export default function AuthorForm(){
                     "html": `<p>${error.response.proof}</p>`
                 })
             }
-            // console.log(error)
+        
         }
         )
   
