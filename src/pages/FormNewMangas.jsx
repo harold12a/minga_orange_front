@@ -1,47 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
-import apiUrl from "../apiUrl";
-
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import apiUrl from '../apiUrl';
 
 const FormNewMangas = () => {
-    const [title, setTitle] = useState('');
-    const [category, setCategory] = useState('');
-    const [description, setDescription] = useState('');
-    const [coverPhoto, setCoverPhoto] = useState('');
+    const titleRef = useRef('');
+    const categoryRef = useRef('');
+    const descriptionRef = useRef('');
+    const coverPhotoRef = useRef('');
     const [errors, setErrors] = useState({});
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        axios(apiUrl + '/categories')
+            .then((res) => {
+                setCategories(res.data.response);
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Validar los campos
         const validationErrors = {};
-        if (title.length < 3) {
+        if (titleRef.current.value.length < 3) {
             validationErrors.title = 'El título debe tener al menos 3 caracteres';
         }
-        if (category === '') {
+        if (categoryRef.current.value === '') {
             validationErrors.category = 'Debes seleccionar una categoría';
         }
-        if (description.length < 3) {
+        if (descriptionRef.current.value.length < 3) {
             validationErrors.description = 'La descripción debe tener al menos 3 caracteres';
-        }
-        if (!coverPhoto) {
-            validationErrors.coverPhoto = 'Debes seleccionar una foto de portada';
         }
 
         if (Object.keys(validationErrors).length === 0) {
             // Si no hay errores, realizar acciones con los datos del formulario
             console.log({
-                title,
-                category,
-                description,
-                coverPhoto
+                title: titleRef.current.value,
+                category_id: categoryRef.current.value,
+                description: descriptionRef.current.value,
+                cover_photo: coverPhotoRef.current.value,
             });
 
             // Restablecer los campos del formulario después de enviarlos
-            setTitle('');
-            setCategory('');
-            setDescription('');
-            setCoverPhoto('');
+            titleRef.current.value = '';
+            categoryRef.current.value = '';
+            descriptionRef.current.value = '';
+            coverPhotoRef.current.value = '';
             setErrors({});
         } else {
             // Si hay errores, mostrar mensajes de error
@@ -49,51 +54,41 @@ const FormNewMangas = () => {
         }
     };
 
-
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        axios(apiUrl + "/categories")
-            .then(res => { setCategories(res.data.response) })
-            .catch((err) => console.log(err));
-    }, []);
-
-    console.log("pruebas")
-    console.log(categories)
     return (
-        <div className="flex justify-center  h-screen ">
-            <form className="w-3/5 mt-24 " onSubmit={handleSubmit}>
+        <div className="flex justify-center h-screen md:justify-center">
+            <form className="w-3/5 mt-24 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2" onSubmit={handleSubmit}>
+                <div className='mb-4 flex justify-center'>
+                    <h3 className="font-poppins font-normal whitespace-nowrap text-[25px] text-center">
+                        New Manga
+                    </h3>
+                </div>
+
                 <div className="mb-4">
-                    <label htmlFor="title" className="block mb-2 font-bold text-gray-700">
-                    </label>
+                    <label htmlFor="title" className="block mb-2 font-bold text-gray-700"></label>
                     <input
                         type="text"
                         id="title"
-                        value={title}
+                        ref={titleRef}
                         placeholder="Insert title"
-                        onChange={(e) => setTitle(e.target.value)}
-                        className="w-full px-3 py-2  border-b border-gray-400  "
+                        className="w-full px-3 py-2 border-b border-gray-400"
                         required
                     />
                     {errors.title && <p className="text-red-500">{errors.title}</p>}
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="category" className="block mb-2 font-bold text-gray-700">
-                    </label>
+                    <label htmlFor="category" className="block mb-2 font-bold text-gray-700"></label>
                     <select
                         id="category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
+                        ref={categoryRef}
                         placeholder="Insert category"
                         className="w-full px-3 py-2 border-b border-gray-400"
-                        required>
+                        required
+                    >
                         <option value="">Insert category</option>
-                        console.log(categories);
                         {categories.map((cat, index) => (
-                            <option key={index} value={cat.name}>
+                            <option key={index} value={cat.id}>
                                 {cat.name}
-
                             </option>
                         ))}
                     </select>
@@ -101,13 +96,11 @@ const FormNewMangas = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="description" className="block mb-2  font-bold text-gray-700">
-                    </label>
+                    <label htmlFor="description" className="block mb-2 font-bold text-gray-700"></label>
                     <textarea
                         id="description"
-                        value={description}
+                        ref={descriptionRef}
                         placeholder="Insert description"
-                        onChange={(e) => setDescription(e.target.value)}
                         className="w-full px-3 py-2 border-b border-gray-400"
                         required
                     />
@@ -115,27 +108,19 @@ const FormNewMangas = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="coverPhoto" className="block mb-2 font-bold text-gray-700">
-                    </label>
+                    <label htmlFor="coverPhoto" className="block mb-2 font-bold text-gray-700"></label>
                     <input
-                        type="file"
+                        type="url"
                         id="coverPhoto"
-                        onChange={(e) => setCoverPhoto(e.target.files[0])}
-                        className="w-full px-1 py-2  border-b border-gray-400  "
-                        accept="image/*"
-                        required
-                        placeholder="Cambiar foto"
+                        ref={coverPhotoRef}
+                        className="w-full px-1 py-2 border-b border-gray-400"
+                        placeholder="Insert cover photo URL"
                     />
                     {errors.coverPhoto && <p className="text-red-500">{errors.coverPhoto}</p>}
                 </div>
-                <button
-                    type="submit"
-                    className="mt-7 mx-auto w-full h-14 bg-[#4338CA] rounded-[50000px] "
-                >
-                    Enviar
+                <button type="submit" className="mt-7 mx-auto w-full h-14 bg-[#4338CA] rounded-[50000px]">
+                    Send
                 </button>
-
-
             </form>
         </div>
     );
