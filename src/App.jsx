@@ -1,14 +1,23 @@
-
 import { RouterProvider } from "react-router-dom";
+import { useEffect } from "react";
 import router from "./pages/router";
-
+import axios from "axios";
+import apiUrl from './apiUrl.js'
+import header from "./header";
 
 function App() {
 
-  return (   
+  useEffect(()=>{
+    let token = localStorage.getItem('token')
+    if(token){
+      
+      axios.post(apiUrl + 'auth/token', null, header())
+    }
 
-    <RouterProvider router={router}/>
-    
+  },[])
+
+  return (   
+    <RouterProvider router={router}/>  
   );
 }
 

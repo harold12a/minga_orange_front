@@ -1,24 +1,40 @@
 import React from "react";
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import Swal from "sweetalert2";
 
 const Resgister = () => {
-  const navigate = useNavigate();
 
-  const singin = ()=>{
+  const navigate = useNavigate();
+  const email = useRef()
+  const password = useRef()
+  const photo = useRef()
+
+  const register = async ()=>{
 
     let data = {
       email: email.current.value,
       password: password.current.value,
       photo: photo.current.value
      }
-     console.log(data);
-     setTimeout(()=>navigate('/'),2000)
+    //  console.log(data);
+     try {
+      await axios.post(apiUrl + '/auth/register', data);
+      Swal.fire({
+        icon: 'success',
+        text: 'Estas Registrado !'
+      });
+      navigate('/signin');
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        text: '¡Regístrate!',
+      });
+    }
+    
   }
 
-  const email = useRef()
-  const password = useRef()
-  const photo = useRef()
+
 
   return (
     <main className="flex w-full min-h-screen items-center justify-between">
@@ -67,7 +83,7 @@ const Resgister = () => {
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-xl text-white rounded-lg bg-gradient-to-r from-[#4338CA] to-[#4338CA]"
             type="button"
             value="Sign up"
-            onClick={singin}
+            onClick={register}
           />
           <div className="relative">
             <input
