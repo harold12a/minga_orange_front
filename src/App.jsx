@@ -10,7 +10,7 @@ function App() {
   useEffect(()=>{
     let token = localStorage.getItem('token')
     if(token){
-      
+      console.log(header());
       axios.post(apiUrl + 'auth/token', null, header())
     }
 

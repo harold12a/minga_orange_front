@@ -14,6 +14,7 @@ const SingIn = () => {
 
     try {
       const response = await axios.post(apiUrl + "auth/singin", data).then(res => res.data);  
+      console.log(response);
       if (response.success) {
        Swal.fire({icon: "success"});
         localStorage.setItem('token', response.response.token);
