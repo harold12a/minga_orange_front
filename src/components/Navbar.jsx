@@ -1,31 +1,64 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiMenuLine } from "react-icons/ri";
 import Display from "./Display";
 import axios from "axios";
 import apiUrl from "../apiUrl.js";
+import header from "../header.js";
 
 const Navbar = () => {
   const signout = async () => {
     try {
-        await axios.post(apiUrl + 'auth/signout', null, header())
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.replace('/')
+      await axios.post(apiUrl + "auth/signout", null, header());
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.replace("/");
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}
+  };
+  const [options, setOptions] = useState([
+    { to: "/", title: "Home" },
+    { to: "/register", title: "Regiter" },
+    { to: "/singin ", title: "Sing In" },
+  ]);
 
-  let options = [
-    { to: "/", title: "Home", role: 0 },
-    { to: "/register", title: "Regiter", online:false },
-    { to: "/singin ", title: "Sing In", online:false },
-    { to: "/", title: "Sing Out",onClick: signout, online: true },
-    { to: "/formNewMangas", title: "New Managa" },
-    { to: "/AuthorForm ", title: "New Author", online: true, role: 0  },
-    { to: "/ChapterForm ", title: "New Chapter",online: true, role: 1  },
-  ];
+  useEffect(() => {
+
+  let user = JSON.parse(localStorage.getItem("user"))
+  console.log(user);
+
+  if (user?.role === 0) {
+    setOptions([
+      { to: "/", title: "Home" },
+      { to: "/author-form ", title: "New Author" },
+      { to: "/", title: "Sing Out", onClick: signout },
+    ])
+  } else if (user?.role === 1 || user?.role === 2) {
+    setOptions([
+      { to: "/", title: "Home" },
+      { to: "/manga-form", title: "New Manga" },
+      { to: "/:manga_id/chapter-form ", title: "New Chapter" },
+      { to: "/", title: "Sing Out", onClick: signout },
+    ]);
+  } 
+  else if (user?.role === 3) {
+
+    setOptions([
+      { to: "/", title: "Home" },
+      { to: "/", title: "Sing Out", onClick: signout },
+    ]);
+  } else {
+    setOptions([
+      { to: "/", title: "Home" },
+      { to: "/register", title: "Regiter" },
+      { to: "/singin ", title: "Sing In" },
+    ]);
+  }
+
+}, []); 
+  
+
   const [show, setShow] = useState(false);
   return (
     <>
