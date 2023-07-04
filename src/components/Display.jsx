@@ -21,7 +21,7 @@ const Display = ({ options, show, setShow }) => {
             onClick={() => setShow(!show)}
           />
         </div>
-        {options?.map((each, index)=> <Anchor key={index} to={each.to} className="text-white text-2xl hover:bg-white  hover:text-blue-600 rounded-lg pr-[72%] pt-2 pb-2 pl-4 md:pr-[75%] xl:pr-[56%] mt-[3px]">{each.title}</Anchor>)}
+        {options?.map((each, index)=> <Anchor onClick={each.onClick}  key={index} to={each.to} className="text-white text-2xl hover:bg-white  hover:text-blue-600 rounded-lg pr-[72%] pt-2 pb-2 pl-4 md:pr-[75%] xl:pr-[56%] mt-[3px]">{each.title}</Anchor>)}
         
       </nav>
     </>

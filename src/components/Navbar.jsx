@@ -1,9 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiMenuLine } from "react-icons/ri";
 import Display from "./Display";
 import axios from "axios";
 import apiUrl from "../apiUrl.js";
+import header from "../header.js";
 
 const Navbar = () => {
   const signout = async () => {
@@ -22,8 +23,11 @@ const Navbar = () => {
     { to: "/singin ", title: "Sing In" },
   ]);
 
+  useEffect(() => {
+
   let user = JSON.parse(localStorage.getItem("user"))
   console.log(user);
+
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
@@ -38,19 +42,21 @@ const Navbar = () => {
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 
-  // else if (user?.role === 3) {
+  else if (user?.role === 3) {
 
-  //   setOptions([
-  //     { to: "/", title: "Home" },
-  //     { to: "/", title: "Sing Out", onClick: signout },
-  //   ]);
-  // } else {
-  //   setOptions([
-  //     { to: "/", title: "Home" },
-  //     { to: "/register", title: "Regiter" },
-  //     { to: "/singin ", title: "Sing In" },
-  //   ]);
-  // }
+    setOptions([
+      { to: "/", title: "Home" },
+      { to: "/", title: "Sing Out", onClick: signout },
+    ]);
+  } else {
+    setOptions([
+      { to: "/", title: "Home" },
+      { to: "/register", title: "Regiter" },
+      { to: "/singin ", title: "Sing In" },
+    ]);
+  }
+
+}, []); 
   
 
   const [show, setShow] = useState(false);

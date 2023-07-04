@@ -18,7 +18,7 @@ const Index = () => {
           <SingIn changeView={changeView} setChangeView={setChangeView}/>
         ) : (
 
-            <main className=" bg-[url('../../src/assets/branden-sk.jpg')] bg-cover bg-repeat-x  bg-center absolute h-screen w-full top-0 left-0 xl:bg-[url('../../src/assets/branden-desktop.png')] "> 
+            <main className=" bg-[url('../../src/assets/branden-sk.jpg')] bg-cover  bg-no-repeat absolute lg:bg-[10%]    h-screen w-full  lg:h-[62%]     top-0 left-0 xl:bg-[url('../../src/assets/branden-desktop.png')] "> 
             <Navbar/>
             <Welcome changeView={changeView} setChangeView={setChangeView} />
             <Carousel />

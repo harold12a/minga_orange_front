@@ -3,7 +3,7 @@ import { Link as Anchor } from 'react-router-dom'
 
 const Welcome = ({changeView, setChangeView}) => {
   return (
-    <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center mt-[240px] xl:mt-[290px] ">
+    <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center mt-[240px] xl:mt-[110px] ">
     <h1 className=" mt-[200px] font-bold text-[40px] xl:text-[65px] leading-47 w-388 h-94 xl:mt-[90px]  ">
       Your favorite comic book store
     </h1>
