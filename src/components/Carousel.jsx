@@ -51,18 +51,18 @@ const Carousel = () => {
         <img
           src={categories[counter]?.character_photo}
           alt=""
-          className="absolute top-[630px] left-[150px] h-64 w-64"
+          className="absolute top-[630px] left-[270px] h-64 w-64"
         />
 
         <img
           src={categories[counter]?.cover_photo}
           alt=""
-          className="absolute top-[620px] left-[440px] h-[250px] w-[180px]"
+          className="absolute top-[620px] left-[600px] h-[250px] w-[190px] "
         />
-        <button className="absolute bg-slate-300 rounded-[50px]  ml-[85%] mt-[6%] ">
+        <button className="absolute bg-slate-300 rounded-[50px]  ml-[85%] mt-[6%] p-[6px]">
           <RiArrowRightLine d={d_left} onClick={next} />
         </button>
-        <button className="absolute bg-slate-300 rounded-[50px] ml-[2.5%] mt-[6%]  ">
+        <button className="absolute bg-slate-300 rounded-[50px] ml-[2.5%] mt-[6%] p-[6px] ">
           <RiArrowLeftLine d={d_right} onClick={prev} />
         </button>
       </div>
