@@ -5,17 +5,31 @@ import Display from "./Display";
 import axios from "axios";
 import apiUrl from "../apiUrl.js";
 import header from "../header.js";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const signout = async () => {
     try {
+      const result = await Swal.fire({
+        title: 'Are you sure ?',
+        text: '¿Do you want to log out?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'yes',
+        cancelButtonText: 'Cancel'
+      });
+
+    if(result.isConfirmed){
+    
       await axios.post(apiUrl + "auth/signout", null, header());
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.replace("/");
-    } catch (error) {
+    }
+  } catch (error) {
       console.log(error);
     }
+  
   };
   const [options, setOptions] = useState([
     { to: "/", title: "Home" },
