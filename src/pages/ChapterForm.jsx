@@ -13,6 +13,7 @@ const ChapterForm = () => {
             insertPages: insertPages.current.value
         }
         console.log(data);
+        
     }
 
     const insertTitle = useRef()
