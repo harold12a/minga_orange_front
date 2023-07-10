@@ -8,21 +8,34 @@ import Swal from "sweetalert2";
 const SingIn = () => {
   const login = async () => {
     let data = {
-      email: email.current.value,
-      password: password.current.value,
+      email: email.current.value?.trim(),
+      password: password.current.value?.trim(),
     }
 
     try {
       const response = await axios.post(apiUrl + "auth/singin", data).then(res => res.data);  
+      console.log(response);
       if (response.success) {
-       Swal.fire({icon: "success"});
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Welcome !!',
+          showConfirmButton: false,
+          timer: 1500
+        })
         localStorage.setItem('token', response.response.token);
         localStorage.setItem('user', JSON.stringify(response.response.user));
         setTimeout(() => window.location.replace("/"), 1000);
       } 
     } catch (error) {
       console.log(error);
-      Swal.fire({icon: "error"})
+      Swal.fire({
+        icon: "error",
+        text: "sign in please!",
+        html: error.response.data.messages
+          .map((each) => `<p>${each}</p>`)
+          .join(""),
+      })
     }
   };
 
@@ -51,7 +64,7 @@ const SingIn = () => {
         </p>
         <form className="flex flex-col my-[2px]">
           <input
-            className="w-[260px] md:w-[300px] lg:w-[260px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
+            className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
             type="email"
             name="email"
             id="email"

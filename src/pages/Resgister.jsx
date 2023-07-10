@@ -2,33 +2,37 @@ import React from "react";
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
+import apiUrl from "../apiUrl.js"
 
 const Resgister = () => {
 
   const navigate = useNavigate();
   const email = useRef()
-  const password = useRef()
   const photo = useRef()
+  const password = useRef()
+ 
 
   const register = async ()=>{
 
     let data = {
-      email: email.current.value,
-      password: password.current.value,
-      photo: photo.current.value
+      email: email.current.value?.trim(),
+      password: password.current.value?.trim(),
+      photo: photo.current.value?.trim()
      }
     //  console.log(data);
      try {
-      await axios.post(apiUrl + '/auth/register', data);
+      await axios.post(apiUrl + '/auth/register', data)
       Swal.fire({
         icon: 'success',
-        text: 'Estas Registrado !'
+        text: 'are you registered !'
       });
-      navigate('/signin');
-    } catch (err) {
+      navigate('/singin');
+    } catch (error) {
       Swal.fire({
         icon: 'error',
-        text: '¡Regístrate!',
+        text: '¡Sing up!',
+        html: error.response.data.messages.map(each=>`<p>${each}</p>`).join('')
       });
     }
     
@@ -46,7 +50,7 @@ const Resgister = () => {
         </p>
         <form className="flex flex-col my-[2px]">
           <input
-            className="w-[260px] md:w-[300px] lg:w-[260px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
+            className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-lg border-2 border-[#1F1F1F]"
             type="email"
             name="email"
             id="email"
