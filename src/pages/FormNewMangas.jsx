@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Swal from "sweetalert2";
 import axios from 'axios';
 import apiUrl from '../apiUrl';
 
@@ -17,29 +18,28 @@ const FormNewMangas = () => {
             })
             .catch((err) => console.log(err));
     }, []);
-
+    const validationErrors = {};
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Validar los campos
-        const validationErrors = {};
         if (titleRef.current.value.length < 3) {
             validationErrors.title = 'El título debe tener al menos 3 caracteres';
-        }
-        if (categoryRef.current.value === '') {
+          }
+          
+          if (categoryRef.current.value === '') {
             validationErrors.category = 'Debes seleccionar una categoría';
-        }
-        if (descriptionRef.current.value.length < 3) {
+          }
+          
+          if (descriptionRef.current.value.length < 3) {
             validationErrors.description = 'La descripción debe tener al menos 3 caracteres';
-        }
+          }
 
         if (Object.keys(validationErrors).length === 0) {
             // Si no hay errores, realizar acciones con los datos del formulario
-            console.log({
-                title: titleRef.current.value,
-                category_id: categoryRef.current.value,
-                description: descriptionRef.current.value,
-                cover_photo: coverPhotoRef.current.value,
+            Swal.fire({
+                icon: 'success',
+                text: 'Los datos del formulario se enviaron correctamente',
             });
 
             // Restablecer los campos del formulario después de enviarlos
@@ -50,7 +50,13 @@ const FormNewMangas = () => {
             setErrors({});
         } else {
             // Si hay errores, mostrar mensajes de error
-            setErrors(validationErrors);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error en el formulario',
+                html: Object.values(validationErrors)
+                    .map((errorMessage) => `<p>${errorMessage}</p>`)
+                    .join(''),
+            });
         }
     };
 
