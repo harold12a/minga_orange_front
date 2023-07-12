@@ -16,7 +16,12 @@ const Navbar = () => {
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'yes',
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
+        didOpen: () => {
+          const confirmButton = document.querySelector('.swal2-confirm');
+          confirmButton.style.backgroundColor = '#2573F0'; 
+          confirmButton.style.color = 'white'; 
+        },
       });
 
     if(result.isConfirmed){
