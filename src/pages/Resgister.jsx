@@ -25,13 +25,13 @@ const Resgister = () => {
       await axios.post(apiUrl + '/auth/register', data)
       Swal.fire({
         icon: 'success',
-        text: 'Estas Registrado !'
+        text: 'are you registered !'
       });
       navigate('/singin');
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        text: '¡Regístrate!',
+        text: '¡Sing up!',
         html: error.response.data.messages.map(each=>`<p>${each}</p>`).join('')
       });
     }
