@@ -6,6 +6,9 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import SingIn from '../pages/SingIn'
 import { useParams } from "react-router";
+import NotAllowed from "./NotAllowed";
+
+
 const Index = () => {
   const [changeView, setChangeView] = useState(false);
 
@@ -22,6 +25,7 @@ const Index = () => {
             <Navbar/>
             <Welcome changeView={changeView} setChangeView={setChangeView} />
             <Carousel />
+            <NotAllowed />
             <Footer/>
              </main>
         )
