@@ -1,16 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+
 
 const NotAllowed = () =>{
 
     return(
 <>
-<div className="">
+<main className="">
+    <h1>Not Allowed</h1>
 <img className=""
 src="../../src/assets/images/Not_allowed.png"
  />
-</div>
+ 
+</main>
 </>
 
     )
