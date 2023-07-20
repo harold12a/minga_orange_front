@@ -6,6 +6,7 @@ import Resgister from "./Resgister";
 import FormNewMangas from "./FormNewMangas";
 import AuthorForm from "./AuthorForm.jsx";
 import ChapterForm from "./ChapterForm";
+import EditChapter from "./EditChapter";
 
 
 
@@ -47,6 +48,9 @@ const router = createBrowserRouter([
       //   console.log(user);
       //    return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
+
+
+      {path:"/edit-chapter",element:<EditChapter/> }
     ]
   },
 ]);
