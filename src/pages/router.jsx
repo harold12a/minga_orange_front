@@ -6,6 +6,7 @@ import Resgister from "./Resgister";
 import FormNewMangas from "./FormNewMangas";
 import AuthorForm from "./AuthorForm.jsx";
 import ChapterForm from "./ChapterForm";
+import Mangas from "./Mangas";
 
 
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       //   console.log(user);
       //    return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
+      { path: "/mangas/:page",element: <Mangas />,loader: ()=>{
+        let user = JSON.parse(localStorage.getItem('user'))
+        console.log(user);
+         return (user) &&  redirect('/not-allowed')
+      }},
     ]
   },
 ]);
