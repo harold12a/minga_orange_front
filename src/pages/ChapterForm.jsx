@@ -1,24 +1,40 @@
-import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import axios from 'axios';
+import header from '../header';
+import Swal from 'sweetalert2';
+import apiUrl from '../apiUrl';
 
-const ChapterForm = () => {
+export default function ChapterForm() {
     const navigate = useNavigate()
-    const send = () => {
-        setTimeout(() => navigate('/singin'), 2000)
+
+    const insertTitle = useRef();
+    const insertOrder = useRef();
+    const insertPages = useRef();
+
+    const send = async () => {
 
         let data = {
-            insertTitle: insertTitle.current.value,
-            insertOrder: insertOrder.current.value,
-            insertPages: insertPages.current.value
-        }
-        console.log(data);
-        
-    }
+            insertTitle: insertTitle.value,
+            insertOrder: insertOrder.value,
+            insertPages: insertPages.value
+        };
 
-    const insertTitle = useRef()
-    const insertOrder = useRef()
-    const insertPages = useRef()
+        try {
+            await axios.post(apiUrl + "/chapters", data, header());
+            Swal.fire({
+                icon: "success"
+            });
+            navigate("/");
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                text: '¡information error!',
+                html: error.response.data.messages.map(each=>`<p>${each}</p>`).join(''),
+            })
+        }
+
+    };
 
     return (
 
@@ -28,19 +44,19 @@ const ChapterForm = () => {
                 type="text"
                 name="insertTitle"
                 id="insertTitle"
-                placeholder='insert title' 
+                placeholder='insert title'
                 ref={insertTitle} />
             <input className='flex justify-center border-b border-gray-400 bg-slate-200 my-2 mx-auto mt-[30px] w-[250px]'
                 type="text"
                 name="insertOrder"
                 id="insertOrder"
-                placeholder='insert order' 
+                placeholder='insert order'
                 ref={insertOrder} />
             <input className='flex justify-center border-b border-gray-400 bg-slate-200 my-2 mx-auto mt-[30px] w-[250px]'
                 type="text"
                 name="insertPages"
                 id="insertPages"
-                placeholder='insert pages' 
+                placeholder='insert pages'
                 ref={insertPages} />
             <input className='flex justify-center w-[260px] h-[45px] text-xl my-2 mx-auto mt-[80px] text-white rounded-lg bg-gradient-to-r from-[#4338CA] to-[#4338CA]'
                 type="button"
@@ -48,7 +64,6 @@ const ChapterForm = () => {
                 onClick={send}
             />
         </div>
-    )
+    );
 }
 
-export default ChapterForm

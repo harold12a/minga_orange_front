@@ -7,6 +7,7 @@ import FormNewMangas from "./FormNewMangas";
 import AuthorForm from "./AuthorForm.jsx";
 import ChapterForm from "./ChapterForm";
 import EditChapter from "./EditChapter";
+import NotAllowed from "./NotAllowed";
 
 
 
@@ -30,17 +31,17 @@ const router = createBrowserRouter([
       { path: "/manga-form", element: <FormNewMangas /> ,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
-         return ( user.role === 0 || user.role === 3) &&  redirect('/')
+         return ( user.role === 0 || user.role === 3) &&  redirect('/not-allowed')
       }  },
       { path: "/author-form", element: <AuthorForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
-         return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
+         return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
       } },
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
-         return (user.role === 3 || user.role === 0  ) &&  redirect('/')
+         return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')
       }},
       // NO VA PARA EL GRUPO ORANGE
       // { path: "/cia-form", element: <CompanyForm />,loader: ()=>{
@@ -49,8 +50,8 @@ const router = createBrowserRouter([
       //    return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
 
-
-      {path:"/edit-chapter",element:<EditChapter/> }
+      {path:"/edit-chapter",element:<EditChapter/> },
+      {path: "/not-allowed",element: <NotAllowed />}
     ]
   },
 ]);
