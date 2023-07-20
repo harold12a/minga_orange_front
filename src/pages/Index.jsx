@@ -6,6 +6,9 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import SingIn from '../pages/SingIn'
 import { useParams } from "react-router";
+
+
+
 const Index = () => {
   const [changeView, setChangeView] = useState(false);
 
