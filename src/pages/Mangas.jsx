@@ -5,24 +5,32 @@ import { useEffect } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import header from "../header";
+import CardManga from "../components/CardManga";
+import { useSelector,useDispatch } from "react-redux";
+import mangaAction from '../store/actions/mangas'
+
+
+const {saveTitle} = mangaAction
 
 const Mangas = () => {
-  const [title, setTitle] = useState('');
+  const store = useSelector(store =>store)
+  const dispatch = useDispatch()
+  console.log(store);
+  const [title, setTitle] = useState("");
   const [mangas, setMangas] = useState([]);
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
   useEffect(() => {
-    try {
-      console.log(title);
-      axios(apiUrl + "mangas?title="+ title, header()).then((res) => {
+   
+    axios(apiUrl + "mangas?title=" + store.mangas.text, header())
+      .then((res) => {
         setMangas(res.data.response);
+        console.log(res.data.response);
         setPrev(res.data.prev_page);
         setNext(res.data.next_page);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, [title]);
+      })
+      .catch((error) => console.log(error));
+  }, [store.mangas.text]);
 
   return (
     <>
@@ -37,14 +45,14 @@ const Mangas = () => {
             name="insertManga"
             id="insertManga"
             placeholder="Find your manga here"
-            onChange={(event)=>setTitle(event.target.value)}
+            onChange={(event) => dispatch(saveTitle({title:event.target.value}))} defaultValue={(store.mangas.text)}
           />
           <RiSearch2Line className="w-6 xl:w-10 h-6 mt-[-42px] ml-[15%] md:ml-[33%] xl:ml-[22%] text-indigo-700 xl:text-gray-500" />
         </div>
 
         <div className=" h-screen  bg-[#EBEBEB] rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
           <div className=" flex justify-center xl:justify-start xl:ml-[12%] ">
-            <Anchor className=" hidden xl:block bg-gray-400 text-gray-800 pt-[7px] md:pt-[10px]  pl-[15px] md:pl-[40px] mx-[2%] mt-[15%] xl:mt-[5%]  w-[70px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]">
+            <Anchor className=" hidden xl:block bg-gray-400 text-gray-800  pt-[7px] md:pt-[10px]  pl-[15px] md:pl-[40px] mx-[2%] mt-[15%] xl:mt-[5%]  w-[70px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]">
               all
             </Anchor>
             <Anchor className=" bg-red-200 text-red-500 pt-[7px] md:pt-[10px]  pl-[15px] md:pl-[26px] mx-[2%] xl:mx-[-1%] mt-[15%] xl:mt-[5%] w-[70px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]">
@@ -60,30 +68,17 @@ const Mangas = () => {
               kodomo
             </Anchor>
           </div>
-
-          <div className="bg-white rounded-[20px] mt-[30px] h-[25%] w-[90%] mx-[5%]  xl:ml-[12%] xl:w-[35%]  ">
-            <h1 className="font-bold grid grid-cols-3 gap-2 text-[18px] md:text-[29px] pl-[30px] pt-8 ">
-              Naruto:And That´s Why Yout´re Disqualified!!#8
-            </h1>
-            <h2 className="text-orange-400 font-bold pl-[30px] md:text-[25px]">
-              Type
-            </h2>
-            
-            <img
-              className="  mt-[-47%] sm:mt-[-35%] xl:mt-[-38%] h-[100%] w-[50%] ml-[50%] object-cover rounded-l-[50%] rounded-r-[10%] "
-              src="../../src/assets/images/card-naruto.png"
-              alt="img-naruto"
-            />
+          <div className="" >
+            {mangas.map((each) => <CardManga key={each._id} title={each.title} />)}
+           
           </div>
           <div>
-            {prev && <input type="button" value={'previus page'}/> }
-            {next && <input type="button" value={'next page'}/> }
+          {prev && <input type="button" value={'previus page'}/>}
+            {next && <input type="button" value={'next page'}/>}
           </div>
-         
-        </div>
-     
-      </main>
 
+        </div>
+      </main>
     </>
   );
 };
