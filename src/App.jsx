@@ -4,6 +4,8 @@ import router from "./pages/router";
 import axios from "axios";
 import apiUrl from './apiUrl.js'
 import header from "./header";
+import store from "./store/store";
+import { Provider } from "react-redux";
 
 function App() {
 
@@ -16,7 +18,9 @@ function App() {
   },[])
 
   return (   
+    <Provider store={store}>
     <RouterProvider router={router}/>  
+    </Provider>
   );
 }
 
