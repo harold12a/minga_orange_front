@@ -9,7 +9,7 @@ import ChapterForm from "./ChapterForm";
 import EditChapter from "./EditChapter";
 import NotAllowed from "./NotAllowed";
 import DetailsChapter from "./DetailsChapter";
-
+import Author from "./Author";
 
 
 
@@ -34,10 +34,10 @@ const router = createBrowserRouter([
         console.log(user);
          return ( user.role === 0 || user.role === 3) &&  redirect('/not-allowed')
       }  },
-      { path: "/author-form", element: <AuthorForm />,loader: ()=>{
+      { path: "/me", element: <AuthorForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
-         return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
+         return (user.role === 1) &&  redirect('/not-allowed')
       } },
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
