@@ -3,15 +3,11 @@ import { createAction } from "@reduxjs/toolkit";
 const saveTitle = createAction('saveTitle', obj => {
     return{
         payload:{
-            text: obj.title,
-          
-          
+            text: obj.title,        
         }
     }
-
 }) 
-
-const saveButton = createAction('saveButton', obj => {
+const data = createAction('data', obj => {
     return{
         payload:{
             check: obj.check
@@ -19,6 +15,6 @@ const saveButton = createAction('saveButton', obj => {
     }
 })
 
-const mangaAction = {saveTitle,saveButton}
+const mangaAction = {saveTitle,data}
 
 export default mangaAction

@@ -15,6 +15,10 @@ module.exports = {
         colors:{
           primary:{
             100:'#4338CA',
+            seinen: '#FC9C57',
+            shoujo: '#00BA88',
+            shounen: '#EF8481',
+            comics: '#8883F0',
           }
          
         }

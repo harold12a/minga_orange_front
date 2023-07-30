@@ -1,14 +1,14 @@
 import { createReducer } from "@reduxjs/toolkit";
 import mangaAction from "../actions/mangas";
 
-const { saveTitle,saveButton } = mangaAction
+const { saveTitle,data } = mangaAction
 
 const initialState = {
     text: '',
     check:[]
 };
 
-const mangaReducer = createReducer(initialState, builder => builder
+const mangaReducer = createReducer(initialState, (builder) => builder
     .addCase(saveTitle,
         (state, action) => {
             const newState = {
@@ -19,7 +19,7 @@ const mangaReducer = createReducer(initialState, builder => builder
             return newState
         }     
     )
-    .addCase(saveButton,
+    .addCase(data,
         (state, action) => {
             const newState ={
                 ...state,
