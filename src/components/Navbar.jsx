@@ -50,7 +50,7 @@ const Navbar = () => {
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
-      { to: "/me ", title: "New Author" },
+      { to: "/author-form", title: "New Author" },
       { to: "/", title: "Sing Out", onClick: signout },
     ])
   } else if (user?.role === 1 || user?.role === 2) {
@@ -58,7 +58,7 @@ const Navbar = () => {
       { to: "/", title: "Home" },
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
-      { to: '/me', title: "Profile" },
+      { to: "/me", title: "Profile" },
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 

@@ -9,9 +9,6 @@ import ChapterForm from "./ChapterForm";
 import NotAllowed from "./NotAllowed";
 import Author from "./Author";
 
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,11 +30,17 @@ const router = createBrowserRouter([
         console.log(user);
          return ( user.role === 0 || user.role === 3) &&  redirect('/not-allowed')
       }  },
-      { path: "/me", element: <AuthorForm />,loader: ()=>{
+      { path: "/author-form", element: <AuthorForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
-         return (user.role === 1) &&  redirect('/not-allowed')
-      } },
+        return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
+      }},
+      { path: '/me', element: <Author />, loader: async () => {
+        let user = JSON.parse(localStorage.getItem("user"))
+        user ? user = { role: user.role } : user = { role: 0 }
+        return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
+      }},
+      
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
