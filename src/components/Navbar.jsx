@@ -56,6 +56,7 @@ const Navbar = () => {
   } else if (user?.role === 1 || user?.role === 2) {
     setOptions([
       { to: "/", title: "Home" },
+      {to: "/mangas/1", title: "Mangas"},
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
       { to: '/me', title: "Profile" },
@@ -67,6 +68,7 @@ const Navbar = () => {
 
     setOptions([
       { to: "/", title: "Home" },
+      {to: "/mangas/1", title: "Mangas"},
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } else {

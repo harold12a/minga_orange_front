@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import chapterActions from "../store/actions/chapters"
 import header from "../header.js";
+<<<<<<< HEAD
 
 
 const DetailsChapter = () => {
@@ -66,6 +67,73 @@ const DetailsChapter = () => {
         }
         console.log(contains);
     };
+=======
+
+
+const DetailsChapter = () => {
+    const d_left =
+        "M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z";
+    const d_right =
+        "M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z";
+    const navigate = useNavigate()
+    let { id, page } = useParams()
+    let [pages, setPages] = useState([])
+    let [nextPage, setNextPages] = useState("")
+    let dispatch = useDispatch()
+    const { save_data } = chapterActions
+
+
+
+    
+
+    useEffect(() => {
+        axios(apiUrl + `chapters/${id}`, header())
+            .then(res => {
+                console.log(res)
+                setPages(res.data.response.pages)
+                setNextPages(res.data.next)
+                dispatch(save_data(
+                    {
+
+                        title: res.data.response.title,
+                        order: res.data.response.order
+                    }
+                ))
+            })
+            .catch((err) => console.log(err));
+    },
+        []
+    );
+
+    const store = useSelector(store => store)
+
+    console.log(store)
+
+    let [contains, setContains] = useState(0);
+
+    const next = () => {
+        if (contains >= pages.length - 1) {
+            setContains(0);
+            window.location.replace(`/details-chapter/${nextPage}/0`)
+        } else {
+            console.log(nextPage)
+            setContains(contains + 1);
+            navigate(`/details-chapter/${id}/${contains}`)
+        }
+        console.log(contains);
+    };
+
+    const prev = () => {
+        if (contains <= 0) {
+            setContains(0);
+        } else {
+            setContains(contains - 1);
+        }
+        console.log(contains);
+    };
+
+
+>>>>>>> c50a96dd45c99105874cfb1072fc06d8a04370f5
 
     return (
         <nav className="flex flex-col">
