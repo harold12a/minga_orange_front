@@ -1,13 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import chapterActions from "../actions/chapters";
+import chaptersActions from "../actions/chapters";
 
-const { save_data } = chapterActions
+const { save_data } = chaptersActions
 const initialState ={
     title: "",
     order: 0
 }
 
-const chapterReducer = createReducer(
+const chaptersReducer = createReducer(
     initialState,
     (builder) => builder.addCase(
         save_data,
@@ -22,4 +22,4 @@ const chapterReducer = createReducer(
     )
 )
 
-export default chapterReducer
+export default chaptersReducer

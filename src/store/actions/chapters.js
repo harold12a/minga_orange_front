@@ -5,7 +5,7 @@ const save_data = createAction(
     (obj )=> {
         return {
             payload: {
-                orde: obj.order,
+                order: obj.order,
                 title: obj.title
             }
         }

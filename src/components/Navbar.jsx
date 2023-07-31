@@ -59,7 +59,7 @@ const Navbar = () => {
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
       { to: '/me', title: "Profile" },
-      { to: '/chapter/id/page', title: "Chapters"},
+      { to: '/chapter', title: "Chapters"},
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 
