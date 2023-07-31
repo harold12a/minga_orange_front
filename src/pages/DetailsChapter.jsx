@@ -21,10 +21,6 @@ const DetailsChapter = () => {
     let dispatch = useDispatch()
     const { save_data } = chapterActions
 
-
-
-    
-
     useEffect(() => {
         axios(apiUrl + `chapters/${id}`, header())
             .then(res => {
@@ -70,8 +66,6 @@ const DetailsChapter = () => {
         }
         console.log(contains);
     };
-
-
 
     return (
         <nav className="flex flex-col">
