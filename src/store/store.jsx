@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import chapterReducer from "./reducers/chapters";
+import mangaReducer from "./reducers/mangas";
+
 
 const store = configureStore({
     reducer:{
-
-        chapter: chapterReducer
-
+    mangas: mangaReducer
+    chapter: chapterReducer
+    
     }
 })
 
