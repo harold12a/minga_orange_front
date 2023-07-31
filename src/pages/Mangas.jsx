@@ -13,14 +13,16 @@ const { saveTitle } = mangaAction;
 
 const Mangas = () => {
   const store = useSelector((store) => store);
-  console.log(store);
   const dispatch = useDispatch();
+
   const [categories, setCategories] = useState([]);
   const [mangas, setMangas] = useState([]);
-  console.log(categories);
+  const [checkedStates, setCheckedStates] = useState({});
+  
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
   const [noResults, setNoResults] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     axios(apiUrl + "mangas?title=" + store.mangas.text, header())
@@ -48,15 +50,41 @@ const Mangas = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const setCheck = (e) => {
-    e.target.checked = !e.target.checked && true;
-    console.log(e.target.checked = !e.target.checked && true);
-  };
+  // Función para actualizar el estado de un botón individual
+  // const handleBtnClick = (categoryId) => {
+  //   setCheckedStates((prevState) => ({
+  //     ...prevState,
+  //     [categoryId]: !prevState[categoryId],
+  //   }));
+  // };
+
+  const Check = (e) => {
+    // e.target.checked = !e.target.checked 
+    filteredMangas(e.target.value)
+    console.log(e.target.value);
+};
+
+  // Filtra los mangas en función de los botones activos
+  // const filteredMangas = mangas.filter((manga) => {
+  //   const categoryId = manga.category_id._id;
+  //   return !checkedStates[categoryId] || checkedStates[categoryId] === true;
+  // });
+let filterdata = [];
+  const filteredMangas = (value) =>{
+
+    filterdata = mangas.filter((manga) => {
+   if(value == 'all'){
+    return true;
+   }
+      return value == manga.category_id.name
+    })
+    console.log(filterdata);
+  }
+
 
   const actionBtn = (page) => {
     console.log(page);
     window.location.replace(`/mangas/${page}`);
-
   };
 
   return (
@@ -81,18 +109,19 @@ const Mangas = () => {
         </div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
-       
           <div className="flex xl:justify-start xl:ml-[12%] justify-center">
-            {categories.map(each => 
+            {categories.map((each) => (
               <BtnManga
                 key={each._id}
                 name={each.name}
                 color={each.color}
                 hover={each.hover}
                 value={each._id}
-                action={(e) => setCheck(e)}
+                // checked={checkedStates[each._id] || false} // Estado del botón individual
+                // onClick={() => handleBtnClick(each._id)}
+                action={(e) => Check(e)} 
               />
-            )}
+            ))}
           </div>
 
           {noResults ? (

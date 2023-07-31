@@ -45,17 +45,14 @@ const Navbar = () => {
   useEffect(() => {
 
   let user = JSON.parse(localStorage.getItem("user"))
-  console.log(user);
+  
 
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
-<<<<<<< HEAD
       {to: "/mangas/1", title: "Mangas"},
       { to: "/author-form ", title: "New Author" },
-=======
       { to: "/me ", title: "New Author" },
->>>>>>> 68fbc0d5a3f2422ce8f159086044ebc3592c4429
       { to: "/", title: "Sing Out", onClick: signout },
     ])
   } else if (user?.role === 1 || user?.role === 2) {

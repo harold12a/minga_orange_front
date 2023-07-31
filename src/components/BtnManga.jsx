@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link as Anchor } from "react-router-dom";
+
 
 const BtnManga = ({ name, color, hover, value, action }) => {
   return (
