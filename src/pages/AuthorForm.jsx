@@ -15,6 +15,7 @@ export default function AuthorForm() {
   const city_country = useRef();
   const date = useRef();
   const urlrofile = useRef();
+  const photo = useRef();
 
   const Send = async () => {
     const [city, country] = city_country.current.value.split(",");
@@ -26,6 +27,7 @@ export default function AuthorForm() {
       country: country,
       date: date.current.value?.trim(),
       urlrofile: urlrofile.current.value?.trim(),
+      photo: photo.current.value?.trim(),
     };
 
     try {
@@ -91,6 +93,7 @@ export default function AuthorForm() {
           />
           <input
             ref={urlrofile}
+            // ref={photo}
             className="w-[260px] md:w-[300px] lg:w-[360px] xl:w-[440px] h-[45px] p-2 my-[12px] text-[12px] rounded-ly border-b-2 border-[#1F1F1F]"
             type="url"
             placeholder="URL Profile Image"
