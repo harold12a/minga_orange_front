@@ -9,8 +9,12 @@ import ChapterForm from "./ChapterForm";
 import Mangas from "./Mangas";
 import EditChapter from "./EditChapter";
 import NotAllowed from "./NotAllowed";
+import MangaDetail from "./MangaDetail";
+import ChapterDetail from "../components/ChapterDetail";
+import MangaDetails from "../components/MangaDetails";
 import DetailsChapter from "./DetailsChapter";
 import Author from "./Author";
+
 
 const router = createBrowserRouter([
   {
@@ -46,6 +50,8 @@ const router = createBrowserRouter([
       // console.log(user);
       // return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
+      {path: "/not-allowed",element: <NotAllowed />},
+      { path: "/MangaDetail", element: <MangaDetail />},
       { path: "/mangas/:page",element: <Mangas/>},
       {path: "/not-allowed",element: <NotAllowed />},
 
