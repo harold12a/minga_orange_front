@@ -8,8 +8,11 @@ import CardManga from "../components/CardManga";
 import { useSelector, useDispatch } from "react-redux";
 import mangaAction from "../store/actions/mangas";
 import BtnManga from "../components/BtnManga";
+import { useParams, useNavigate } from "react-router-dom";
 
-const { saveTitle } = mangaAction;
+const { saveTitle, data } = mangaAction;
+
+let checked = [];
 
 const Mangas = () => {
   const store = useSelector((store) => store);
@@ -21,9 +24,12 @@ const Mangas = () => {
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
   const [noResults, setNoResults] = useState(false);
+  const { page } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios(apiUrl + "mangas?title=" + store.mangas.text, header())
+    // axios(apiUrl + "mangas?title=" + store.mangas.text, header())
+    axios(apiUrl + `mangas?title=${store.mangas.text}&page=${page}&category=${checked.join(',')}`, header())
       .then((res) => {
         setMangas(res.data.response);
         console.log(res.data.response);
@@ -47,16 +53,18 @@ const Mangas = () => {
       .then((res) => setCategories(res.data.response))
       .catch((error) => console.log(error));
   }, []);
-
   const setCheck = (e) => {
-    e.target.checked = !e.target.checked && true;
-    console.log(e.target.checked = !e.target.checked && true);
+    if(!checked.includes(e.target.id)){
+      checked.push(e.target.id);
+    }else{
+      checked = checked.filter(element => element !== e.target.id);
+    }
+    console.log(checked.join(', '));        
   };
 
   const actionBtn = (page) => {
     console.log(page);
-    window.location.replace(`/mangas/${page}`);
-
+    navigate(`/mangas/${page}`);
   };
 
   return (
@@ -73,7 +81,7 @@ const Mangas = () => {
             id="insertManga"
             placeholder="Find your manga here"
             onChange={(event) =>
-              dispatch(saveTitle({ title: event.target.value }))
+            dispatch(saveTitle({ title: event.target.value }))
             }
             defaultValue={store.mangas.text}
           />
@@ -90,7 +98,7 @@ const Mangas = () => {
                 color={each.color}
                 hover={each.hover}
                 value={each._id}
-                action={(e) => setCheck(e)}
+                action={(e) =>{ setCheck(e)}}
               />
             )}
           </div>
@@ -162,3 +170,4 @@ const Mangas = () => {
 };
 
 export default Mangas;
+
