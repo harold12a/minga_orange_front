@@ -8,23 +8,14 @@ import CardManga from "../components/CardManga";
 import { useSelector, useDispatch } from "react-redux";
 import mangaAction from "../store/actions/mangas";
 import BtnManga from "../components/BtnManga";
+import { useParams, useNavigate } from "react-router-dom";
 
-const { saveTitle } = mangaAction;
+const { saveTitle, data } = mangaAction;
+
+let checked = [];
 
 const Mangas = () => {
   const store = useSelector((store) => store);
-<<<<<<< HEAD
-  const dispatch = useDispatch();
-
-  const [categories, setCategories] = useState([]);
-  const [mangas, setMangas] = useState([]);
-  const [checkedStates, setCheckedStates] = useState({});
-  
-  const [prev, setPrev] = useState(null);
-  const [next, setNext] = useState(null);
-  const [noResults, setNoResults] = useState(false);
-  const [checked, setChecked] = useState(false);
-=======
   console.log(store);
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
@@ -33,10 +24,12 @@ const Mangas = () => {
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
   const [noResults, setNoResults] = useState(false);
->>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
+  const { page } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios(apiUrl + "mangas?title=" + store.mangas.text, header())
+    // axios(apiUrl + `mangas?title=${store.mangas.text}&page=${page}&category=${checked.join(',')}`, header())
       .then((res) => {
         setMangas(res.data.response);
         console.log(res.data.response);
@@ -60,53 +53,18 @@ const Mangas = () => {
       .then((res) => setCategories(res.data.response))
       .catch((error) => console.log(error));
   }, []);
-
-<<<<<<< HEAD
-  // Función para actualizar el estado de un botón individual
-  // const handleBtnClick = (categoryId) => {
-  //   setCheckedStates((prevState) => ({
-  //     ...prevState,
-  //     [categoryId]: !prevState[categoryId],
-  //   }));
-  // };
-
-  const Check = (e) => {
-    // e.target.checked = !e.target.checked 
-    filteredMangas(e.target.value)
-    console.log(e.target.value);
-};
-
-  // Filtra los mangas en función de los botones activos
-  // const filteredMangas = mangas.filter((manga) => {
-  //   const categoryId = manga.category_id._id;
-  //   return !checkedStates[categoryId] || checkedStates[categoryId] === true;
-  // });
-let filterdata = [];
-  const filteredMangas = (value) =>{
-
-    filterdata = mangas.filter((manga) => {
-   if(value == 'all'){
-    return true;
-   }
-      return value == manga.category_id.name
-    })
-    console.log(filterdata);
-  }
-
-=======
   const setCheck = (e) => {
-    e.target.checked = !e.target.checked && true;
-    console.log(e.target.checked = !e.target.checked && true);
+    if(!checked.includes(e.target.id)){
+      checked.push(e.target.id);
+    }else{
+      checked = checked.filter(element => element !== e.target.id);
+    }
+    console.log(checked.join(', '));        
   };
->>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
 
   const actionBtn = (page) => {
     console.log(page);
-    window.location.replace(`/mangas/${page}`);
-<<<<<<< HEAD
-=======
-
->>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
+    navigate(`/mangas/${page}`);
   };
 
   return (
@@ -131,31 +89,18 @@ let filterdata = [];
         </div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
-<<<<<<< HEAD
-          <div className="flex xl:justify-start xl:ml-[12%] justify-center">
-            {categories.map((each) => (
-=======
        
           <div className="flex xl:justify-start xl:ml-[12%] justify-center">
             {categories.map(each => 
->>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
               <BtnManga
                 key={each._id}
                 name={each.name}
                 color={each.color}
                 hover={each.hover}
                 value={each._id}
-<<<<<<< HEAD
-                // checked={checkedStates[each._id] || false} // Estado del botón individual
-                // onClick={() => handleBtnClick(each._id)}
-                action={(e) => Check(e)} 
-              />
-            ))}
-=======
-                action={(e) => setCheck(e)}
+                action={(e) =>{ setCheck(e)}}
               />
             )}
->>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
           </div>
 
           {noResults ? (

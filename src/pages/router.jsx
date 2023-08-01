@@ -10,7 +10,7 @@ import Mangas from "./Mangas";
 import EditChapter from "./EditChapter";
 import NotAllowed from "./NotAllowed";
 import DetailsChapter from "./DetailsChapter";
-import Author from "./Author";
+
 
 const router = createBrowserRouter([
   {

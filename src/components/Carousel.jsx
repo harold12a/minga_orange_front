@@ -3,7 +3,7 @@ import axios from "axios";
 import apiUrl from "../apiUrl";
 import React from "react";
 import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri";
-import { data } from "autoprefixer";
+
 
 const Carousel = () => {
   const d_left =
@@ -70,4 +70,6 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+
+
+export default Carousel
