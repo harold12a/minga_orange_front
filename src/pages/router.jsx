@@ -7,6 +7,9 @@ import FormNewMangas from "./FormNewMangas";
 import AuthorForm from "./AuthorForm.jsx";
 import ChapterForm from "./ChapterForm";
 import NotAllowed from "./NotAllowed";
+import MangaDetail from "./MangaDetail";
+import ChapterDetail from "../components/ChapterDetail";
+import MangaDetails from "../components/MangaDetails";
 
 
 
@@ -48,7 +51,9 @@ const router = createBrowserRouter([
       //   console.log(user);
       //    return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
-      {path: "/not-allowed",element: <NotAllowed />}
+      {path: "/not-allowed",element: <NotAllowed />},
+      { path: "/MangaDetail", element: <MangaDetail />}
+      
     ]
   },
 ]);
