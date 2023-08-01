@@ -50,15 +50,22 @@ const Navbar = () => {
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
+      {to: "/mangas/1", title: "Mangas"},
       { to: "/me ", title: "New Author" },
       { to: "/", title: "Sing Out", onClick: signout },
     ])
   } else if (user?.role === 1 || user?.role === 2) {
     setOptions([
       { to: "/", title: "Home" },
+      {to: "/mangas/1", title: "Mangas"},
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
-      { to: '/me', title: "Profile" },
+      { to: '/details-chapter/:_id/:page', title: "Chapters"},
+      { to: "/me", title: "Profile" },
+      { to: "/pro", title: "AuthorProfile" },
+
+
+>
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 
@@ -66,6 +73,7 @@ const Navbar = () => {
 
     setOptions([
       { to: "/", title: "Home" },
+      {to: "/mangas/1", title: "Mangas"},
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } else {
@@ -83,7 +91,7 @@ const Navbar = () => {
   return (
     <>
       {show && <Display options={options} show={show} setShow={setShow} />}
-      <div className="flex-none order-1 flex-grow-0 w-54 h-32 flex w-full absolute z-10  ">
+      <div className="flex-none order-1 flex-grow-0 w-54 h-32 flex w-full absolute z-10">
         <div className="w-full absolute flex justify-between items-center p-2 xl:p-[25px] ">
           <RiMenuLine
             onClick={() => setShow(!show)}
