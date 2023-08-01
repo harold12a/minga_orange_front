@@ -60,7 +60,7 @@ const Navbar = () => {
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
       { to: '/me', title: "Profile" },
-      { to: '/chapter', title: "Chapters"},
+      { to: '/details-chapter/:_id/:page', title: "Chapters"},/* enrutar con m07 */ 
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 
