@@ -51,7 +51,6 @@ const Navbar = () => {
     setOptions([
       { to: "/", title: "Home" },
       {to: "/mangas/1", title: "Mangas"},
-      { to: "/author-form ", title: "New Author" },
       { to: "/me ", title: "New Author" },
       { to: "/", title: "Sing Out", onClick: signout },
     ])
