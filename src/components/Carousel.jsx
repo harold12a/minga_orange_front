@@ -49,8 +49,8 @@ const Carousel = () => {
           {categories[counter]?.description}
         </p>
         <img
-          src={categories[counter]?.pages}
-          alt=""
+          src={categories[counter]?.character_photo}
+          alt="imagen1"
           className="absolute top-[630px] left-[270px] h-64 w-64"
         />
 

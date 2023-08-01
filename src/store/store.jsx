@@ -6,11 +6,15 @@ import mangasnewsReducer from './reducers/mangas'
 
 const store = configureStore({
     reducer:{
+
+    mangas: mangaReducer,
+    chapter: chapterReducer
         //acá vamos a traernos los reductores de los diferentes recursos (usuarios, mangas capitulos...)
         chapter: chapterReducer,
         manga: mangaReducer,
         mangasnews: mangasnewsReducer,
       // author:authorReducer
+
 
     }
 })
