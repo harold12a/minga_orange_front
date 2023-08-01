@@ -8,6 +8,7 @@ import AuthorForm from "./AuthorForm.jsx";
 import ChapterForm from "./ChapterForm";
 import NotAllowed from "./NotAllowed";
 import Author from "./Author";
+import Authorprofile from "./Authorprofile";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,8 @@ const router = createBrowserRouter([
         user ? user = { role: user.role } : user = { role: 0 }
         return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
       }},
-      
+      { path: "/pro", element: <Authorprofile />,
+      },
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
