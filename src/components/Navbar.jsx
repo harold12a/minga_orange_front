@@ -63,9 +63,6 @@ const Navbar = () => {
       { to: '/details-chapter/:_id/:page', title: "Chapters"},
       { to: "/me", title: "Profile" },
       { to: "/pro", title: "AuthorProfile" },
-
-
->
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 

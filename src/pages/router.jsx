@@ -48,12 +48,8 @@ const router = createBrowserRouter([
         user ? user = { role: user.role } : user = { role: 0 }
         return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
       }},
-      { path: "/pro", element: <Authorprofile />,
+      { path: "/pro", element: <Authorprofile />
       },
-
-         return (user.role === 1) &&  redirect('/not-allowed')
-      } },
-
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
          return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')
