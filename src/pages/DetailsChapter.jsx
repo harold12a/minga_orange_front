@@ -104,4 +104,4 @@ const DetailsChapter = () => {
 
 }
 
-export default DetailsChapter
+export default DetailsChapter;

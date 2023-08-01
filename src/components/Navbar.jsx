@@ -50,6 +50,7 @@ const Navbar = () => {
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
+      {to: "/mangas/1", title: "Mangas"},
       { to: "/me ", title: "New Author" },
       { to: "/", title: "Sing Out", onClick: signout },
     ])
@@ -59,8 +60,12 @@ const Navbar = () => {
       {to: "/mangas/1", title: "Mangas"},
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
-      { to: '/me', title: "Profile" },
-      { to: '/details-chapter/:_id/:page', title: "Chapters"},/* enrutar con m07 */ 
+      { to: '/details-chapter/:_id/:page', title: "Chapters"},
+      { to: "/me", title: "Profile" },
+      { to: "/pro", title: "AuthorProfile" },
+
+
+>
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 
