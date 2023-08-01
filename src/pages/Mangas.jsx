@@ -13,6 +13,7 @@ const { saveTitle } = mangaAction;
 
 const Mangas = () => {
   const store = useSelector((store) => store);
+<<<<<<< HEAD
   const dispatch = useDispatch();
 
   const [categories, setCategories] = useState([]);
@@ -23,6 +24,16 @@ const Mangas = () => {
   const [next, setNext] = useState(null);
   const [noResults, setNoResults] = useState(false);
   const [checked, setChecked] = useState(false);
+=======
+  console.log(store);
+  const dispatch = useDispatch();
+  const [categories, setCategories] = useState([]);
+  const [mangas, setMangas] = useState([]);
+  console.log(categories);
+  const [prev, setPrev] = useState(null);
+  const [next, setNext] = useState(null);
+  const [noResults, setNoResults] = useState(false);
+>>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
 
   useEffect(() => {
     axios(apiUrl + "mangas?title=" + store.mangas.text, header())
@@ -50,6 +61,7 @@ const Mangas = () => {
       .catch((error) => console.log(error));
   }, []);
 
+<<<<<<< HEAD
   // Función para actualizar el estado de un botón individual
   // const handleBtnClick = (categoryId) => {
   //   setCheckedStates((prevState) => ({
@@ -81,10 +93,20 @@ let filterdata = [];
     console.log(filterdata);
   }
 
+=======
+  const setCheck = (e) => {
+    e.target.checked = !e.target.checked && true;
+    console.log(e.target.checked = !e.target.checked && true);
+  };
+>>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
 
   const actionBtn = (page) => {
     console.log(page);
     window.location.replace(`/mangas/${page}`);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
   };
 
   return (
@@ -109,19 +131,31 @@ let filterdata = [];
         </div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
+<<<<<<< HEAD
           <div className="flex xl:justify-start xl:ml-[12%] justify-center">
             {categories.map((each) => (
+=======
+       
+          <div className="flex xl:justify-start xl:ml-[12%] justify-center">
+            {categories.map(each => 
+>>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
               <BtnManga
                 key={each._id}
                 name={each.name}
                 color={each.color}
                 hover={each.hover}
                 value={each._id}
+<<<<<<< HEAD
                 // checked={checkedStates[each._id] || false} // Estado del botón individual
                 // onClick={() => handleBtnClick(each._id)}
                 action={(e) => Check(e)} 
               />
             ))}
+=======
+                action={(e) => setCheck(e)}
+              />
+            )}
+>>>>>>> 0a9cfaab6c7cceeba819604f3a78f4b50d57253e
           </div>
 
           {noResults ? (

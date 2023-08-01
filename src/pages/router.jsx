@@ -30,17 +30,14 @@ const router = createBrowserRouter([
       } },
       { path: "/manga-form", element: <FormNewMangas /> ,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
-        console.log(user);
          return ( user.role === 0 || user.role === 3) &&  redirect('/not-allowed')
       }  },
       { path: "/me", element: <AuthorForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
-        console.log(user);
          return (user.role === 1) &&  redirect('/not-allowed')
       } },
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
-        console.log(user);
          return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')
       }},
       // NO VA PARA EL GRUPO ORANGE
@@ -55,7 +52,11 @@ const router = createBrowserRouter([
       //chapters
       {path:"/edit-chapter",element:<EditChapter/>},
       {path:"/not-allowed",element: <NotAllowed />},
-      {path:"/details-chapter",element: <DetailsChapter/>}
+      {path:"/details-chapter/:id/:page",element: <DetailsChapter/>, loader: () =>{
+        let user = JSON.parse(localStorage.getItem('user'))
+        console.log(user);
+        return (user.role === 0 || user.role === 3 ) &&  redirect('/not-allowed')
+      }},
     ]
   },
 ]);
