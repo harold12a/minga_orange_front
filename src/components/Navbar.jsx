@@ -50,12 +50,9 @@ const Navbar = () => {
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
-<<<<<<< HEAD
       {to: "/mangas/1", title: "Mangas"},
       { to: "/author-form ", title: "New Author" },
-=======
       { to: "/me ", title: "New Author" },
->>>>>>> 68fbc0d5a3f2422ce8f159086044ebc3592c4429
       { to: "/", title: "Sing Out", onClick: signout },
     ])
   } else if (user?.role === 1 || user?.role === 2) {
@@ -65,7 +62,7 @@ const Navbar = () => {
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
       { to: '/me', title: "Profile" },
-      { to: '/chapter', title: "Chapters"},
+      { to: '/details-chapter/:id/:page', title: "Chapters"},
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 

@@ -5,7 +5,7 @@ import mangaReducer from "./reducers/mangas";
 
 const store = configureStore({
     reducer:{
-    mangas: mangaReducer
+    mangas: mangaReducer,
     chapter: chapterReducer
     
     }
