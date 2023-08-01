@@ -60,7 +60,6 @@ const Mangas = () => {
       checked = checked.filter(element => element !== e.target.id);
     }
     console.log(checked.join(', '));        
-
   };
 
   const actionBtn = (page) => {
@@ -82,7 +81,7 @@ const Mangas = () => {
             id="insertManga"
             placeholder="Find your manga here"
             onChange={(event) =>
-              dispatch(saveTitle({ title: event.target.value }))
+            dispatch(saveTitle({ title: event.target.value }))
             }
             defaultValue={store.mangas.text}
           />
@@ -171,3 +170,4 @@ const Mangas = () => {
 };
 
 export default Mangas;
+
