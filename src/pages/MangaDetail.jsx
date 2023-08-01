@@ -27,6 +27,7 @@ const MangaDetail = () => {
                 let token = localStorage.getItem("token");
                 let headers = { headers: { Authorization: `Bearer ${token}` } };
                 axios(apiURL + '/mangas/' + manga_id, headers)
+                    //.then(res => setManga(res.data.response))
                     .then(res => dispatch(saveManga({ manga: res.data.response })))
                     .catch(error => console.log(error))
             }
