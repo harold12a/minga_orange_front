@@ -20,4 +20,4 @@ const authorReducer = createReducer (
         }
     )
 )
-export default authorReducer
+export default authorReducer;
