@@ -10,8 +10,6 @@ import Mangas from "./Mangas";
 import EditChapter from "./EditChapter";
 import NotAllowed from "./NotAllowed";
 import MangaDetail from "./MangaDetail";
-import ChapterDetail from "../components/ChapterDetail";
-import MangaDetails from "../components/MangaDetails";
 import DetailsChapter from "./DetailsChapter";
 import Author from "./Author";
 import Authorprofile from "./Authorprofile";
@@ -68,7 +66,7 @@ const router = createBrowserRouter([
       //chapters
       {path:"/edit-chapter",element:<EditChapter/>},
       {path:"/not-allowed",element: <NotAllowed />},
-      {path:"/details-chapter/:_id/:page",element: <DetailsChapter/>,loader: () =>{
+      {path:"/details-chapter/:id/:page",element: <DetailsChapter/>,loader: () =>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
         return (user.role === 0 || user.role === 3 ) &&  redirect('/not-allowed')

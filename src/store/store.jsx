@@ -8,9 +8,8 @@ const store = configureStore({
   reducer: {
     mangas: mangaReducer,
     chapter: chapterReducer,
-    chapter: chapterReducer,
     manga: mangaReducer,
-    mangasnews: mangasnewsReducer,
+    mangasnews: mangasnewsReducer
     // author:authorReducer
   },
 });
