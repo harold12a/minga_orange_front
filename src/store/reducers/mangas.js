@@ -5,7 +5,7 @@ const { saveTitle,data } = mangaAction
 
 const initialState = {
     text: '',
-    check:[]
+    checks:[]
 };
 
 const mangaReducer = createReducer(initialState, (builder) => builder
@@ -23,7 +23,7 @@ const mangaReducer = createReducer(initialState, (builder) => builder
         (state, action) => {
             const newState ={
                 ...state,
-                check: action.payload.check
+                checks: action.payload.checks
             }
             return newState
         }
