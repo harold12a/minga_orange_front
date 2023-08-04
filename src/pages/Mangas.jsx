@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 import { useEffect } from "react";
 import axios from "axios";
@@ -12,27 +12,60 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const { saveTitle, data } = mangaAction;
 
-let checked = [];
-
 const Mangas = () => {
-  const store = useSelector((store) => store);
-  console.log(store);
+  const inputChecked = useRef();
+  const text = useSelector((store) => store.manga.text);
+  const checks = useSelector((store) => store.manga.checks);
+
+  console.log(checks);
+  // console.log(text);
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
   const [mangas, setMangas] = useState([]);
-  console.log(categories);
+  // console.log(categories);
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
   const [noResults, setNoResults] = useState(false);
   const { page } = useParams();
   const navigate = useNavigate();
 
+  const actionBtn = (numberPage) => {
+    navigate(`/mangas/${numberPage}`);
+  };
+
   useEffect(() => {
-    // axios(apiUrl + "mangas?title=" + store.mangas.text, header())
-    axios(apiUrl + `mangas?title=${store.mangas.text}&page=${page}&category=${checked.join(',')}`, header())
+    axios
+      .get(
+        apiUrl + `mangas?title=${text}&page=1&category_id=${checks.join(",")}`,
+        header()
+      )
       .then((res) => {
         setMangas(res.data.response);
-        console.log(res.data.response);
+        // console.log(res.data.response);
+        setPrev(res.data.prev_page);
+        setNext(res.data.next_page);
+        actionBtn(1);
+        if (res.data.response.length === 0) {
+          setNoResults(true);
+        } else {
+          setNoResults(false);
+        }
+      })
+      .catch((error) => {
+        setNoResults(true);
+        console.log(error);
+      });
+  }, [text, checks]);
+  useEffect(() => {
+    axios
+      .get(
+        apiUrl +
+          `mangas?title=${text}&page=${page}&category_id=${checks.join(",")}`,
+        header()
+      )
+      .then((res) => {
+        setMangas(res.data.response);
+        // console.log(res.data.response);
         setPrev(res.data.prev_page);
         setNext(res.data.next_page);
         if (res.data.response.length === 0) {
@@ -45,7 +78,7 @@ const Mangas = () => {
         setNoResults(true);
         console.log(error);
       });
-  }, [store.mangas.text]);
+  }, [page]);
 
   useEffect(() => {
     axios
@@ -54,17 +87,11 @@ const Mangas = () => {
       .catch((error) => console.log(error));
   }, []);
   const setCheck = (e) => {
-    if(!checked.includes(e.target.id)){
-      checked.push(e.target.id);
-    }else{
-      checked = checked.filter(element => element !== e.target.id);
-    }
-    console.log(checked.join(', '));        
-  };
-
-  const actionBtn = (page) => {
-    console.log(page);
-    navigate(`/mangas/${page}`);
+    let checks = Object.values(inputChecked.current)
+      .filter(each => each.checked)
+      .map(each => each.id);
+      console.log(checks);
+    dispatch(data({ checks }));
   };
 
   return (
@@ -81,27 +108,32 @@ const Mangas = () => {
             id="insertManga"
             placeholder="Find your manga here"
             onChange={(event) =>
-            dispatch(saveTitle({ title: event.target.value }))
+              dispatch(saveTitle({ title: event.target.value }))
             }
-            defaultValue={store.mangas.text}
+            defaultValue={text}
           />
           <RiSearch2Line className="w-6 xl:w-10 h-6 mt-[-42px] ml-[15%] md:ml-[33%] xl:ml-[22%] text-indigo-700 xl:text-gray-500" />
         </div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
-       
-          <div className="flex xl:justify-start xl:ml-[12%] justify-center">
-            {categories.map(each => 
+          <form
+            ref={inputChecked}
+            className="flex xl:justify-start xl:ml-[12%] justify-center"
+          >
+            {categories.map((each) => (
               <BtnManga
                 key={each._id}
                 name={each.name}
                 color={each.color}
                 hover={each.hover}
                 value={each._id}
-                action={(e) =>{ setCheck(e)}}
+                action={(e) => {
+                  setCheck(e);
+                }}
+                isChecked={checks?.includes(each._id)}
               />
-            )}
-          </div>
+            ))}
+          </form>
 
           {noResults ? (
             <p className="text-center text-red-500 font-semibold my-8 mt-[100px] text-[25px] ">
@@ -128,7 +160,9 @@ const Mangas = () => {
             </p>
           ) : (
             <>
-              <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col xl:justify-center xl:mx-[10%] ">
+              {/* <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col xl:justify-center xl:mx-[0%] "> */}
+              <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col  xl:mx-[15%] ">
+       
                 {mangas.map((each) => (
                   <CardManga
                     key={each._id}
@@ -136,31 +170,34 @@ const Mangas = () => {
                     cover_photo={each.cover_photo}
                     type={each.category_id.name}
                     color={each.category_id.color}
+                    hover={each.category_id.hover}
                   />
                 ))}
               </div>
             </>
           )}
 
-          <div className="flex justify-center">
+          <div className="flex justify-center   ">
             {prev && (
-              <input
+              <button
                 type="button"
-                value={"previus page"}
+                value={prev}
                 onClick={(e) => {
                   actionBtn(e.target.value);
                 }}
-              />
+                className=" bg-black text-green-500  mr-6  pl-[5px] mt-[5%] xl:mt-[10%] w-[80px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]"
+              >prev </button>
             )}
             {next && (
-              <input
+<button
                 type="button"
-                value={"next page"}
+                value={next}
                 onClick={(e) => {
                   actionBtn(e.target.value);
                 }}
                 className=" bg-black text-green-500    pl-[5px] mt-[5%] xl:mt-[10%] w-[80px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]"
-              />
+              >
+                next </button>
             )}
           </div>
         </div>
@@ -170,4 +207,3 @@ const Mangas = () => {
 };
 
 export default Mangas;
-

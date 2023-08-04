@@ -23,7 +23,7 @@ const saveTitle = createAction('saveTitle', obj => {
 const data = createAction('data', obj => {
     return{
         payload:{
-            check: obj.check
+            checks: obj.checks
         }
     }
 })
