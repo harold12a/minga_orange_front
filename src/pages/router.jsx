@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       // return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
       {path: "/not-allowed",element: <NotAllowed />},
-      { path: "/MangaDetail", element: <MangaDetail />},
+      { path: "/manga/:manga_id/:page", element: <MangaDetail />},
       { path: "/mangas/:page",element: <Mangas/>},
       {path: "/not-allowed",element: <NotAllowed />},
 

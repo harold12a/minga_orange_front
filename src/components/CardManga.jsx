@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as Anchor } from "react-router-dom";
 
-const CardManga = ({ title, cover_photo, type, color  }) => {
+const CardManga = ({ title, cover_photo, type, color, manda_id  }) => {
   return (
     <>
       <div className="group" >
@@ -13,7 +13,7 @@ const CardManga = ({ title, cover_photo, type, color  }) => {
           <h2 className=" font-bold pl-[30px] md:text-[25px] " style={{ color: `${color}` }}>
             {type}
           </h2>
-          <Anchor className=" hidden xl:block bg-green-200 blod text-green-700 pt-[10px] mt-[13%]  pl-[26px]  ml-[12%] mb-[2%]  w-[90px]  h-[45px] rounded-[50000px] text-[18px] ">
+          <Anchor to={'/manga/' + manda_id + '/1'} /* style={{ backgroundColor: `${hover}`, color: `${color}` }}*/ className=" hidden xl:block bg-green-200 blod text-green-700 pt-[10px] mt-[13%]  pl-[26px]  ml-[12%] mb-[2%]  w-[90px]  h-[45px] rounded-[50000px] text-[18px] ">
               Read
             </Anchor>
           </div>     
