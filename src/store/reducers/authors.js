@@ -1,23 +1,24 @@
 import { createReducer } from "@reduxjs/toolkit";
 import authorActions from "../actions/authors";
 
-const {saveData} = authorActions
+const {saveProfile} = authorActions
 
 const initialState = {
-    profile:{}
+    profile : {}
 }
 
-const authorReducer = createReducer (
+const authorReducer = createReducer(
     initialState,
-    (builer) => builer.addCase(
-        saveData,
-        (state,action)=> {
+    (builder) => builder.addCase(
+        saveProfile,
+        (state, action) => {
             let newState = {
                 ...state,
-                profile: action.payload.profile
+                profile : action.payload.profile
             }
             return newState
         }
     )
 )
-export default authorReducer;
+
+export default authorReducer
