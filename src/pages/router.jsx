@@ -10,8 +10,6 @@ import Mangas from "./Mangas";
 import EditChapter from "./EditChapter";
 import NotAllowed from "./NotAllowed";
 import MangaDetail from "./MangaDetail";
-import ChapterDetail from "../components/ChapterDetail";
-import MangaDetails from "../components/MangaDetails";
 import DetailsChapter from "./DetailsChapter";
 import Author from "./Author";
 import AuthorProfile from "./Author_profile";
@@ -38,17 +36,20 @@ const router = createBrowserRouter([
       }  },
       { path: "/author-form", element: <AuthorForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
-
         console.log(user);
         return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
       }},
-      { path: '/me', element: <Author />, loader: async () => {
+      { path: '/pro', element: <Author />,loader: ()=>{
+        let user = JSON.parse(localStorage.getItem('user'))
+        console.log(user);
+        return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
+      }},
+      { path: "/me", element: <AuthorProfile />,loader: async () => {
         let user = JSON.parse(localStorage.getItem("user"))
         user ? user = { role: user.role } : user = { role: 0 }
         return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
       }},
-      { path: "/pro", element: <AuthorProfile />,
-      },
+
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
          return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')
@@ -60,14 +61,14 @@ const router = createBrowserRouter([
       // return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
       {path: "/not-allowed",element: <NotAllowed />},
-      { path: "/MangaDetail", element: <MangaDetail />},
+      { path: "/manga/:manga_id/:page", element: <MangaDetail />},
       { path: "/mangas/:page",element: <Mangas/>},
       {path: "/not-allowed",element: <NotAllowed />},
 
       //chapters
       {path:"/edit-chapter",element:<EditChapter/>},
       {path:"/not-allowed",element: <NotAllowed />},
-      {path:"/details-chapter/:_id/:page",element: <DetailsChapter/>,loader: () =>{
+      {path:"/details-chapter/:id/:page",element: <DetailsChapter/>,loader: () =>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
         return (user.role === 0 || user.role === 3 ) &&  redirect('/not-allowed')

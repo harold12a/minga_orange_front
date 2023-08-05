@@ -2,10 +2,9 @@ import { createReducer } from "@reduxjs/toolkit";
 import chapterActions from "../actions/chapters";
 
 const { save_data } = chapterActions
-const initialState ={
+const initialState = {
     title: "",
-    order: 0,
-    id:  ""
+    order: 0
 }
 
 const chapterReducer = createReducer(
@@ -13,7 +12,7 @@ const chapterReducer = createReducer(
     (builder) => builder.addCase(
         save_data,
         (state, action) => {
-            const newState ={
+            const newState = {
                 ...state,
                 title: action.payload.title,
                 order: action.payload.order,

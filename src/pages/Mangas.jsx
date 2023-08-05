@@ -170,6 +170,7 @@ const Mangas = () => {
                     cover_photo={each.cover_photo}
                     type={each.category_id.name}
                     color={each.category_id.color}
+                    hover={each.category_id.hover}
                   />
                 ))}
               </div>
