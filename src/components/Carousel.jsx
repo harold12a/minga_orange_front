@@ -50,7 +50,7 @@ const Carousel = () => {
         </p>
         <img
           src={categories[counter]?.character_photo}
-          alt="imagen1"
+          alt=""
           className="absolute top-[630px] left-[270px] h-64 w-64"
         />
 
