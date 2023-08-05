@@ -1,34 +1,33 @@
 import { createAction } from "@reduxjs/toolkit";
 
-
 const saveMangasNews = createAction(
     'saveMangasNews',
-    obj=>{
-        return{
-            payload:{
+    (obj) => {
+        return {
+            payload: {
                 mangas_news: obj.mangas_news
             }
         }
     }
 )
 
-
-const saveTitle = createAction('saveTitle', obj => {
-    return{
-        payload:{
-            text: obj.title,        
-        }
-    }
-}) 
-const data = createAction('data', obj => {
-    return{
-        payload:{
-            checks: obj.checks
-        }
-    }
+const save_title = createAction('save_title', obj => {
+    return { payload: { text: obj.title } }
 })
 
-const mangaAction = {saveTitle,data,saveMangasNews}
+const saveMangaDetail = createAction('saveMangaDetail', obj => {
+    return { payload: { manga_detail: obj.manga_detail } }
+})
 
-export default mangaAction
+const save_checks = createAction('save_checks', obj => {
+    return { payload: { checks: obj.checks } }
+})
 
+const mangasActions = {
+    saveMangasNews,
+    save_title,
+    saveMangaDetail,
+    save_checks
+}
+
+export default mangasActions

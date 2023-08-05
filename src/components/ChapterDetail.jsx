@@ -31,7 +31,7 @@ export default function ChapterDetail() {
             </div>
           </div>
           <Anchor
-            to={'/chapter/' + each._id + '/' + page}
+            to={'/details-chapter/' + each._id + '/' + page}
             className="flex h-12 w-20 items-center justify-center bg-orange-600 rounded-2xl font-roboto font-bold text-[14px] text-white cursor-pointer"
           >
             Read

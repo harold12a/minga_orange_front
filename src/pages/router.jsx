@@ -12,8 +12,7 @@ import NotAllowed from "./NotAllowed";
 import MangaDetail from "./MangaDetail";
 import DetailsChapter from "./DetailsChapter";
 import Author from "./Author";
-import Authorprofile from "./Authorprofile";
-
+import AuthorProfile from "./Author_profile";
 
 const router = createBrowserRouter([
   {
@@ -37,17 +36,16 @@ const router = createBrowserRouter([
       }  },
       { path: "/author-form", element: <AuthorForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
-
         console.log(user);
         return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
       }},
-      { path: '/me', element: <Author />, loader: async () => {
+      { path: '/pro', element: <Author />},
+      { path: "/me", element: <AuthorProfile />,loader: async () => {
         let user = JSON.parse(localStorage.getItem("user"))
         user ? user = { role: user.role } : user = { role: 0 }
         return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
       }},
-      { path: "/pro", element: <Authorprofile />
-      },
+
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
          return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')

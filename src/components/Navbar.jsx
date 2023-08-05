@@ -50,8 +50,7 @@ const Navbar = () => {
   if (user?.role === 0) {
     setOptions([
       { to: "/", title: "Home" },
-      {to: "/mangas/1", title: "Mangas"},
-      { to: "/me ", title: "New Author" },
+      { to: "/author-form", title: "New Author" },
       { to: "/", title: "Sing Out", onClick: signout },
     ])
   } else if (user?.role === 1 || user?.role === 2) {
