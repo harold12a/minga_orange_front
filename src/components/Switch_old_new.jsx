@@ -1,6 +1,6 @@
-export default function Switch_old_new({ switc, setswitc }) {
+export default function Switch_old_new({ switc, setSwitc }) {
     const changeSwitc =()=>{
-        setswitc(!switc)
+        setSwitc(!switc)
     }
     return (
         <>
