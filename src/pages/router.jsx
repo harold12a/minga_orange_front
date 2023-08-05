@@ -39,11 +39,7 @@ const router = createBrowserRouter([
         console.log(user);
         return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
       }},
-      { path: '/pro', element: <Author />,loader: ()=>{
-        let user = JSON.parse(localStorage.getItem('user'))
-        console.log(user);
-        return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/not-allowed')
-      }},
+      { path: '/pro', element: <Author />},
       { path: "/me", element: <AuthorProfile />,loader: async () => {
         let user = JSON.parse(localStorage.getItem("user"))
         user ? user = { role: user.role } : user = { role: 0 }

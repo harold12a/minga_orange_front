@@ -34,6 +34,7 @@ const MangaDetail = () => {
 
   
 
+
   useEffect(() => {
     // if (!manga) { //este conicional funciona pero cuando cambie de manga no se volverá a refetchear el nuevo manga
     if (manga._id !== store.mangas.manga_detail) {
@@ -49,6 +50,7 @@ const MangaDetail = () => {
         .catch((error) => console.log(error));
     }
   }, []);
+
 
   useEffect(() => {
     if (show) {
