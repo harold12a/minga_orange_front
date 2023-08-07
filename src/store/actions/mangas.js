@@ -19,7 +19,7 @@ const saveMangaDetail = createAction('saveMangaDetail', obj => {
     return { payload: { manga_detail: obj.manga_detail } }
 })
 
-const save_checks = createAction('save_checks', obj => {
+const data = createAction('save_checks', obj => {
     return { payload: { checks: obj.checks } }
 })
 
@@ -27,7 +27,7 @@ const mangasActions = {
     saveMangasNews,
     save_title,
     saveMangaDetail,
-    save_checks
+    data
 }
 
 export default mangasActions
