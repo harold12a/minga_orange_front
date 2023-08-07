@@ -13,6 +13,7 @@ import MangaDetail from "./MangaDetail";
 import DetailsChapter from "./DetailsChapter";
 import Author from "./Author";
 import AuthorProfile from "./Author_profile";
+import MyMangas from "./MyMangas";
 
 const router = createBrowserRouter([
   {
@@ -56,10 +57,11 @@ const router = createBrowserRouter([
       // console.log(user);
       // return (user.role === 1 || user.role === 2 || user.role === 3  ) &&  redirect('/')
       // } },
-      {path: "/not-allowed",element: <NotAllowed />},
+      
       { path: "/manga/:manga_id/:page", element: <MangaDetail />},
       { path: "/mangas/:page",element: <Mangas/>},
-      {path: "/not-allowed",element: <NotAllowed />},
+      {path:"/mymangas",element: <MyMangas />},
+     
 
       //chapters
       {path:"/edit-chapter",element:<EditChapter/>},
@@ -69,6 +71,7 @@ const router = createBrowserRouter([
         console.log(user);
         return (user.role === 0 || user.role === 3 ) &&  redirect('/not-allowed')
       }},
+    
     ]
   },
 ]);
