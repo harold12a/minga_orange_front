@@ -137,7 +137,7 @@ const MangaDetail = () => {
         />
       </div>
 
-      {show ? <MangaDetails /> : <ChapterDetail />}
+      {show ? <MangaDetails /> : <DetailsChapter />}
     </div>
   );
 };
