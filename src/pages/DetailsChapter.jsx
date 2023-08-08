@@ -16,6 +16,7 @@ const DetailsChapter = () => {
     const navigate = useNavigate();
     let { id, page } = useParams();
     let [pages, setPages] = useState([]);
+    let [chapter, setChapter] = useState(null);
     let [contains, setContains] = useState(0);
     let [nextPage, setNextPages] = useState("");
     let dispatch = useDispatch();
@@ -24,7 +25,7 @@ const DetailsChapter = () => {
     const[manga_id, setManga_id] = useState("");
 
     useEffect(() => {
-        axios(`${apiUrl}chapter/${id}`, header())
+        axios(`${apiUrl}chapters/${id}`, header())
             .then(res => {
                 setManga_id(res.data.response.chapter.manga_id);
                 setPages(res.data.response.chapter.pages);
@@ -35,7 +36,6 @@ const DetailsChapter = () => {
                         order: res.data.response.chapter.order
                     }
                 ))
-                if (page >= 0) { setContains(parseInt(page))};
             })
             .catch((err) => console.log(err));
     },
@@ -56,11 +56,11 @@ const DetailsChapter = () => {
     const prev = () => {
         if (contains <= 0) {
             setContains(0);
-            navigate(`/manga/${manga_id}/1`)
+            navigate(`/manga/${manga_id}/1`);
         } else {
             setContains(contains - 1);
-            navigate(`details-chapter/${id}/${contains + 1}`)
         }
+        console.log(contains);
     };
 
     return (
