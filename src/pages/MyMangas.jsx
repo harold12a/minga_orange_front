@@ -28,9 +28,9 @@ const MyMangas = () => {
   const { page } = useParams();
   const navigate = useNavigate();
 
-  const actionBtn = (numberPage) => {
-    navigate(`/mangas/${numberPage}`);
-  };
+  // const actionBtn = (numberPage) => {
+  //   navigate(`/mangas/${numberPage}`);
+  // };
 
   useEffect(() => {
     axios
@@ -95,18 +95,18 @@ const MyMangas = () => {
   return (
     <>
       <main className="  bg-[url('../../src/assets/images/pexels-lisa.jpg')]  bg-cover   absolute   lg:h-[70%]   bg-center mt-[-18%] xl:mt-[0%]   h-[50%] w-full  xl:w-[100%]    ">
-        <h1 className=" text-center text-white text-3xl xl:text-[65px] absolute mt-[40%] ml-[23%] xl:ml-[43%] md:mt-[35%] xl:mt-[13%] md:ml-[45%]">
-          <p >
+        <h1 className=" text-center text-white text-3xl  xl:text-[280%] absolute mt-[40%] ml-[23%] xl:ml-[38%]  md:mt-[30%] xl:mt-[11%] md:ml-[35%]">
+          <p className="">
             <br />
             CompanyName
-            <br/>
+            <br  />
             o
             <br />
             AuthorName
           </p>
         </h1>
-        <div className="mt-[90%]"></div>
-      
+  
+        <div className="mt-[90%] md:mt-[60%] xl:mt-[30%] "></div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
           <form
@@ -153,7 +153,6 @@ const MyMangas = () => {
             </p>
           ) : (
             <>
-            
               <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col  xl:mx-[15%] ">
                 {mangas.map((each) => (
                   <EditMangas
