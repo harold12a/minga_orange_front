@@ -62,6 +62,8 @@ const Navbar = () => {
       /*{ to: '/details-chapter/:_id/:page', title: "Chapters"}, se vincula con manga */
       { to: "/me", title: "Profile" },
       { to: "/pro", title: "AuthorProfile" },
+      { to: "/new-role", title:"NewRole" },
+      { to: '/admin', title:"AdminPanel"},
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 

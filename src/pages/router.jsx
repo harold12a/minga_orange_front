@@ -13,6 +13,8 @@ import MangaDetail from "./MangaDetail";
 import DetailsChapter from "./DetailsChapter";
 import Author from "./Author";
 import AuthorProfile from "./Author_profile";
+import NewRole from "./NewRole";
+import AdminPanel from "./AdminPanel"
 
 const router = createBrowserRouter([
   {
@@ -45,7 +47,9 @@ const router = createBrowserRouter([
         user ? user = { role: user.role } : user = { role: 0 }
         return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
       }},
-
+      { path:'/new-role', element:<NewRole/>},
+      { path:'/admin', element:<AdminPanel/>},
+      
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
         let user = JSON.parse(localStorage.getItem('user'))
          return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')
