@@ -94,7 +94,8 @@ const MyMangas = () => {
   };
   return (
     <>
-      <main className="  bg-[url('../../src/assets/images/pexels-lisa.jpg')]  bg-cover   absolute   lg:h-[70%]   bg-center mt-[-18%] xl:mt-[0%]   h-[50%] w-full  xl:w-[100%]    ">
+      <main className="  bg-[url('../../src/assets/images/myMangas.jpg')]  bg-cover   absolute   lg:h-[70%]   bg-center mt-[-18%] xl:mt-[0%]   h-[50%] w-full  xl:w-[100%]   ">
+     
         <h1 className=" text-center text-white text-3xl  xl:text-[280%] absolute mt-[40%] ml-[23%] xl:ml-[38%]  md:mt-[30%] xl:mt-[11%] md:ml-[35%]">
           <p className="">
             <br />

@@ -39,7 +39,7 @@ export default function AuthorForm() {
     } catch (error) {
       Swal.fire({
         icon: "error",
-        text: '¡New Author!',
+        text: 'Error Creating Author',
         html: error.response.data.messages.map(each=>`<p>${each}</p>`).join(''),
     
       });

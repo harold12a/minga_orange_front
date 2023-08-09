@@ -2,7 +2,8 @@ import React from 'react'
 import { Link as Anchor } from "react-router-dom";
 import { RiCompass4Line, RiAddCircleLine } from "react-icons/ri";
 
-const EditMangas = ({ title, cover_photo, type, color  }) => {
+const EditMangas = ({ title, cover_photo, type, color="blanco", hover }) => {
+  console.log(color);
     return (
         <>
           <div className="group" >
@@ -20,7 +21,7 @@ const EditMangas = ({ title, cover_photo, type, color  }) => {
                 {type}
               </h2>
               <div className='absolute mt-2 pl-6 xl:mt-[13%]' >
-                <Anchor  className='mr-2'>
+                <Anchor style={{ backgroundColor: `${hover}`, color: `${color}` }} className='mr-2'>
                   Edit
                 </Anchor>
                 <Anchor>

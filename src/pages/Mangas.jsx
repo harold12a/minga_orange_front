@@ -16,7 +16,7 @@ const Mangas = () => {
   const inputChecked = useRef();
   const text = useSelector((store) => store.manga.text);
   const checks = useSelector((store) => store.manga.checks);
-
+console.log(text);
   console.log(checks);
   // console.log(text);
   const dispatch = useDispatch();
