@@ -13,54 +13,50 @@ const DetailsChapter = () => {
         "M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z";
     const d_right =
         "M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z";
-    const navigate = useNavigate()
-    let { id } = useParams()
-    let [pages, setPages] = useState([])
-    let [chapter, setChapter] = useState([])
+    const navigate = useNavigate();
+    let { id, page } = useParams();
+    let [pages, setPages] = useState([]);
+    let [chapter, setChapter] = useState(null);
     let [contains, setContains] = useState(0);
-    let [nextPage, setNextPages] = useState("")
-    let dispatch = useDispatch()
-    const { save_data } = chapterActions
+    let [nextPage, setNextPages] = useState("");
+    let dispatch = useDispatch();
+    const { save_data } = chapterActions;
     const store = useSelector((store) => store);
+    const[manga_id, setManga_id] = useState("");
 
     useEffect(() => {
-        axios.get(apiUrl + '/chapters/' + id, header())
+        axios(`${apiUrl}chapters/${id}`, header())
             .then(res => {
-                console.log(res)
-                setPages(res.data.response.pages)
-                setNextPages(res.data.next)
+                setManga_id(res.data.response.chapter.manga_id);
+                setPages(res.data.response.chapter.pages);
+                setNextPages(res.data.response.next);
                 dispatch(save_data(
                     {
-                        title: res.data.response.title,
-                        order: res.data.response.order
+                        title: res.data.response.chapter.title,
+                        order: res.data.response.chapter.order
                     }
                 ))
             })
             .catch((err) => console.log(err));
     },
-        [nextPage]
+        [id]
     );
-
-
-    console.log(store)
 
 
     const next = () => {
         if (contains >= pages.length - 1) {
             setContains(0);
-            window.location.replace(`/details-chapter/${nextPage}/0`)
+            navigate(`/details-chapter/${nextPage}/0`)
         } else {
-            console.log(nextPage)
             setContains(contains + 1);
-            navigate(`/details-chapter/${id}/${contains}`)
+            navigate(`/details-chapter/${id}/${contains + 1}`);
         }
-        console.log(contains);
     };
 
     const prev = () => {
         if (contains <= 0) {
             setContains(0);
-            window.location.replace(`/MangaDetail`)
+            navigate(`/manga/${manga_id}/1`);
         } else {
             setContains(contains - 1);
         }
@@ -74,27 +70,27 @@ const DetailsChapter = () => {
                     {store.chapter.title}
                 </h1>
             </div>
-            <div className="flex justify-between items-center ml-6 relative lg:mr-20 lg:justify-center lg:relative lg:h-screen">
-                <div className="lg:absolute lg:mr-[950px] bg-cover">
-                    <button className="absolute bg-transparent ml-[440px] mt-[8px]  lg:w-full lg:bg-transparent lg:ml-[970px] ">
-                        <RiArrowRightLine d={d_left} onClick={next} style={{ fontSize: "30px" }} />
+            <div className="flex justify-between items-center relative lg:mr-20 lg:justify-center lg:relative lg:-mt-20">
+                <div className="lg:absolute lg:mr-[900px] bg-cover">
+                    <button className="absolute bg-transparent ml-[440px]  mt-[8px]  lg:w-full lg:bg-transparent lg:ml-[970px] ">
+                        <RiArrowRightLine d={d_left} onClick={next} style={{ fontSize: "30px",color: "#FF0000" }} />
                     </button>
                     <button className="absolute bg-transparent ml-[0px] mt-[8px]  lg:w-full lg:bg-transparent lg:-ml-[50px]">
-                        <RiArrowLeftLine d={d_right} onClick={prev} style={{ fontSize: "30px" }} />
+                        <RiArrowLeftLine d={d_right} onClick={prev} style={{ fontSize: "30px", color: "#FF0000" }} />
                     </button>
                 </div>
-                <img className="object-cover lg:w-[950px] lg:h-full bg-white w-screen bg-center lg:mt-28"
+                <img className="mt-10 w-full lg:w-[850px] lg:h-[850px] bg-white bg-center lg:mt-28"
                     src={pages[contains]} />
             </div>
-            <div className="-mt-20 ml-59 lg:p-3">
-                <input className='bg-white absolute mt-[90px] w-[50px] lg:w-[50px] lg:ml-[700px] lg:mt-[180px] '
+            <div className="-mt-20 ml-2 lg:p-3">
+                <input className=' bg-white absolute mt-[90px] m-64 w-[50px] lg:w-[50px] lg:ml-[950px] lg:mt-[100px] '
                     type=""
                     name=""
                     id=""
                     placeholder={contains}
                 />
                 <h4 className="">  {store.chapter.order} </h4>
-                <img className="absolute mt-[90px] w-[45px] -ml-[55px] lg:absolute lg:w-[50px] lg:ml-[630px] lg:mt-[180px] "
+                <img className="absolute mt-[90px] w-[50px] ml-48 lg:absolute lg:w-[50px] lg:ml-[890px] lg:mt-[100px] "
                     src="../../src/assets/images/iconComent.png" />
             </div>
         </nav>

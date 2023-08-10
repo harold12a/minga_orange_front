@@ -39,7 +39,7 @@ export default function AuthorForm() {
     } catch (error) {
       Swal.fire({
         icon: "error",
-        text: '¡New Author!',
+        text: 'Error Creating Author',
         html: error.response.data.messages.map(each=>`<p>${each}</p>`).join(''),
     
       });
@@ -104,7 +104,7 @@ export default function AuthorForm() {
         </form>
       </div>
       <img
-        className="hidden md:block md:absolute md:top-0 md:right-0 h-screen w-[50%] object-cover"
+        className="   hidden md:block md:absolute md:top-0 md:right-0 h-screen w-[50%] object-cover"
         src="../../src/assets/images/authorprofile.png"
         alt="authorprofile"
       />

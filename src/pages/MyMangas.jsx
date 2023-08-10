@@ -1,25 +1,22 @@
 import React, { useRef, useState } from "react";
-import { RiSearch2Line } from "react-icons/ri";
 import { useEffect } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import header from "../header";
-import CardManga from "../components/CardManga";
+import EditMangas from "../components/EditMangas";
 import { useSelector, useDispatch } from "react-redux";
 import mangaAction from "../store/actions/mangas";
 import BtnManga from "../components/BtnManga";
 import { useParams, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-
 
 const { saveTitle, data } = mangaAction;
 
-const Mangas = () => {
+const MyMangas = () => {
   const inputChecked = useRef();
   const text = useSelector((store) => store.manga.text);
   const checks = useSelector((store) => store.manga.checks);
-console.log(text);
-  console.log(checks);
+
+  // console.log(checks);
   // console.log(text);
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
@@ -31,9 +28,9 @@ console.log(text);
   const { page } = useParams();
   const navigate = useNavigate();
 
-  const actionBtn = (numberPage) => {
-    navigate(`/mangas/${numberPage}`);
-  };
+  // const actionBtn = (numberPage) => {
+  //   navigate(`/mangas/${numberPage}`);
+  // };
 
   useEffect(() => {
     axios
@@ -90,32 +87,27 @@ console.log(text);
   }, []);
   const setCheck = (e) => {
     let checks = Object.values(inputChecked.current)
-      .filter(each => each.checked)
-      .map(each => each.id);
-      console.log(checks);
+      .filter((each) => each.checked)
+      .map((each) => each.id);
+    console.log(checks);
     dispatch(data({ checks }));
   };
-
   return (
     <>
-      <main className="  bg-[url('../../src/assets/images/pexels-lisa.jpg')]  bg-cover   absolute   lg:h-[70%]   bg-center mt-[-18%] xl:mt-[0%]   h-[50%] w-full  xl:w-[100%]    ">
-        <h1 className="text-white text-3xl xl:text-[65px] absolute mt-[40%] ml-[33%] xl:ml-[43%] md:mt-[35%] xl:mt-[13%] md:ml-[45%]">
-          Mangas
+      <main className="  bg-[url('../../src/assets/images/myMangas.jpg')]  bg-cover   absolute   lg:h-[70%]   bg-center mt-[-18%] xl:mt-[0%]   h-[50%] w-full  xl:w-[100%]   ">
+     
+        <h1 className=" text-center text-white text-3xl  xl:text-[280%] absolute mt-[40%] ml-[23%] xl:ml-[38%]  md:mt-[30%] xl:mt-[11%] md:ml-[35%]">
+          <p className="">
+            <br />
+            CompanyName
+            <br  />
+            o
+            <br />
+            AuthorName
+          </p>
         </h1>
-        <div>
-          <input
-            className="flex justify-center xl:bg-gray-200  border-gray-100 bg-white pl-[60px] mx-auto mt-[60%] md:mt-[42%] xl:mt-[24%] w-[320px] xl:w-[1100px] h-[60px] rounded-[50000px] xl:rounded-lg text-[20px] xl:text-[30px]"
-            type="text"
-            name="insertManga"
-            id="insertManga"
-            placeholder="Find your manga here"
-            onChange={(event) =>
-              dispatch(saveTitle({ title: event.target.value }))
-            }
-            defaultValue={text}
-          />
-          <RiSearch2Line className="w-6 xl:w-10 h-6 mt-[-42px] ml-[15%] md:ml-[33%] xl:ml-[22%] text-indigo-700 xl:text-gray-500" />
-        </div>
+  
+        <div className="mt-[90%] md:mt-[60%] xl:mt-[30%] "></div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
           <form
@@ -162,11 +154,9 @@ console.log(text);
             </p>
           ) : (
             <>
-              {/* <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col xl:justify-center xl:mx-[0%] "> */}
               <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col  xl:mx-[15%] ">
-       
                 {mangas.map((each) => (
-                  <CardManga
+                  <EditMangas
                     key={each._id}
                     title={each.title}
                     cover_photo={each.cover_photo}
@@ -188,10 +178,12 @@ console.log(text);
                   actionBtn(e.target.value);
                 }}
                 className=" bg-black text-green-500  mr-6  pl-[5px] mt-[5%] xl:mt-[10%] w-[80px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]"
-              >prev </button>
+              >
+                prev{" "}
+              </button>
             )}
             {next && (
-<button
+              <button
                 type="button"
                 value={next}
                 onClick={(e) => {
@@ -199,14 +191,14 @@ console.log(text);
                 }}
                 className=" bg-black text-green-500    pl-[5px] mt-[5%] xl:mt-[10%] w-[80px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]"
               >
-                next </button>
+                next{" "}
+              </button>
             )}
           </div>
         </div>
-        <Footer/>
       </main>
     </>
   );
 };
 
-export default Mangas;
+export default MyMangas;

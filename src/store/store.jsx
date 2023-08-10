@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-// import authorReducer from "./reducers/authors";
-import mangaReducer from "./reducers/manga";
+import authorReducer from "./reducers/authors";
+import mangaReducer from "./reducers/mangas";
 import chapterReducer from "./reducers/chapters";
 import mangasnewsReducer from "./reducers/mangas";
 
@@ -11,9 +10,8 @@ const store = configureStore({
     manga: mangasnewsReducer , 
     chapter: chapterReducer,
     mangasnews: mangasnewsReducer,
-
-    // author:authorReducer
-  },
+    authors:authorReducer,
+  }
 });
 
 export default store;
