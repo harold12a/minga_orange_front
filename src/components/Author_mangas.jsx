@@ -1,14 +1,16 @@
 import { useEffect} from 'react';
 import apiUrl from '../apiUrl';
 import axios from 'axios';
+import header from '../header';
 import ButtonManage from './ButtonManage';
 import { useDispatch, useSelector } from 'react-redux';
 import mangasActions from '../store/actions/mangas'
 import { Link as Anchor } from 'react-router-dom';
 
+
 const { saveMangasNews } = mangasActions
 
-export default function Author_mangas({ switc }) {
+export default function Author_mangas({ switc}) {
 
     const dispatch = useDispatch()
     const store = useSelector(store => store)
@@ -16,12 +18,12 @@ export default function Author_mangas({ switc }) {
     const allMangas = store.mangas.all
     const newMangas = store.mangas.new
     const oldMangas = store.mangas.old
+ 
 
     useEffect(
         () => {
             if (!logoMangas && (allMangas?.length === 0) && (oldMangas?.length === 0) && (newMangas?.length === 0)) {
-                let headers = { headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` } }
-                axios(apiUrl + "mangas/news", headers)
+                axios(apiUrl + "mangas/news", header())
                     .then(res => {
                         if (res.data.response.logo) {
                             dispatch(saveMangasNews({
@@ -97,7 +99,6 @@ export default function Author_mangas({ switc }) {
 
             </div> : ""}
             <ButtonManage />
-
         </>
     )
 }

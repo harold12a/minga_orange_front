@@ -57,11 +57,12 @@ const Navbar = () => {
     setOptions([
       { to: "/", title: "Home" },
       {to: "/mangas/1", title: "Mangas"},
+      {to: "/mymangas", title: "MyMangas"},
       { to: "/manga-form", title: "New Manga" },
       { to: "/:manga_id/chapter-form ", title: "New Chapter" },
       /*{ to: '/details-chapter/:_id/:page', title: "Chapters"}, se vincula con manga */
       { to: "/me", title: "Profile" },
-      { to: "/pro", title: "AuthorProfile" },
+      { to: "/author-form", title: "AuthorProfile" },
       { to: "/", title: "Sing Out", onClick: signout },
     ]);
   } 
