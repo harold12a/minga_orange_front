@@ -12,7 +12,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 
 
-const { saveTitle, data } = mangaAction;
+const { save_title, data } = mangaAction;
 
 const Mangas = () => {
   const inputChecked = useRef();
@@ -110,7 +110,7 @@ console.log(text);
             id="insertManga"
             placeholder="Find your manga here"
             onChange={(event) =>
-              dispatch(saveTitle({ title: event.target.value }))
+              dispatch(save_title({ title: event.target.value }))
             }
             defaultValue={text}
           />
