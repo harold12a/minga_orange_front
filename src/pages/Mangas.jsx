@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 import mangaAction from "../store/actions/mangas";
 import BtnManga from "../components/BtnManga";
 import { useParams, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+
 
 const { saveTitle, data } = mangaAction;
 
@@ -201,6 +203,7 @@ console.log(text);
             )}
           </div>
         </div>
+        <Footer/>
       </main>
     </>
   );

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import mangasActions from '../store/actions/mangas'
 import { Link as Anchor } from 'react-router-dom';
 
+
 const { saveMangasNews } = mangasActions
 
 export default function Author_mangas({ switc}) {
@@ -98,7 +99,6 @@ export default function Author_mangas({ switc}) {
 
             </div> : ""}
             <ButtonManage />
-
         </>
     )
 }
