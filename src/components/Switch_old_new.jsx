@@ -1,6 +1,7 @@
 export default function Switch_old_new({ switc, setSwitc }) {
     const changeSwitc =()=>{
         setSwitc(!switc)
+        console.log('click');
     }
     return (
         <>
