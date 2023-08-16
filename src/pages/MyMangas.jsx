@@ -8,75 +8,52 @@ import { useSelector, useDispatch } from "react-redux";
 import mangaAction from "../store/actions/mangas";
 import BtnManga from "../components/BtnManga";
 import { useParams, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
+// import authorActions from '../store/actions/authors';
+import { Link as Anchor } from "react-router-dom";
+import commentsActions from "../store/actions/mangas";
 
-const { saveTitle, data } = mangaAction;
+
+
+
+const { data } = mangaAction;
+const { readManga, destroyManga } = commentsActions;
+
+// const { saveProfile } = authorActions
 
 const MyMangas = () => {
   const inputChecked = useRef();
-  const text = useSelector((store) => store.manga.text);
+ 
   const checks = useSelector((store) => store.manga.checks);
 
   // console.log(checks);
-  // console.log(text);
+ 
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
-  const [mangas, setMangas] = useState([]);
+  
   // console.log(categories);
-  const [prev, setPrev] = useState(null);
-  const [next, setNext] = useState(null);
+
   const [noResults, setNoResults] = useState(false);
   const { page } = useParams();
   const navigate = useNavigate();
+  const mangas = useSelector((store) => store.manga_upd_del.mangas);
+  const next = useSelector((store) => store.manga_upd_del.next);
+  const prev = useSelector((store) => store.manga_upd_del.prev);
+  console.log(mangas);
 
-  // const actionBtn = (numberPage) => {
-  //   navigate(`/mangas/${numberPage}`);
-  // };
+  // const profile = store.authors.profile
+  // console.log(profile);
+
+  const actionBtn = (numberPage) => {
+    navigate(`/my-mangas/mangas/${numberPage}`);
+  };
 
   useEffect(() => {
-    axios
-      .get(
-        apiUrl + `mangas?title=${text}&page=1&category_id=${checks.join(",")}`,
-        header()
-      )
-      .then((res) => {
-        setMangas(res.data.response);
-        // console.log(res.data.response);
-        setPrev(res.data.prev_page);
-        setNext(res.data.next_page);
-        actionBtn(1);
-        if (res.data.response.length === 0) {
-          setNoResults(true);
-        } else {
-          setNoResults(false);
-        }
-      })
-      .catch((error) => {
-        setNoResults(true);
-        console.log(error);
-      });
-  }, [text, checks]);
+ dispatch(readManga({checks, page:1}))
+  }, [checks]);
+
   useEffect(() => {
-    axios
-      .get(
-        apiUrl +
-          `mangas?title=${text}&page=${page}&category_id=${checks.join(",")}`,
-        header()
-      )
-      .then((res) => {
-        setMangas(res.data.response);
-        // console.log(res.data.response);
-        setPrev(res.data.prev_page);
-        setNext(res.data.next_page);
-        if (res.data.response.length === 0) {
-          setNoResults(true);
-        } else {
-          setNoResults(false);
-        }
-      })
-      .catch((error) => {
-        setNoResults(true);
-        console.log(error);
-      });
+    dispatch(readManga({checks, page}))
   }, [page]);
 
   useEffect(() => {
@@ -89,24 +66,23 @@ const MyMangas = () => {
     let checks = Object.values(inputChecked.current)
       .filter((each) => each.checked)
       .map((each) => each.id);
-    console.log(checks);
+    // console.log(checks);
     dispatch(data({ checks }));
   };
   return (
     <>
       <main className="  bg-[url('../../src/assets/images/myMangas.jpg')]  bg-cover   absolute   lg:h-[70%]   bg-center mt-[-18%] xl:mt-[0%]   h-[50%] w-full  xl:w-[100%]   ">
-     
         <h1 className=" text-center text-white text-3xl  xl:text-[280%] absolute mt-[40%] ml-[23%] xl:ml-[38%]  md:mt-[30%] xl:mt-[11%] md:ml-[35%]">
           <p className="">
             <br />
             CompanyName
-            <br  />
+            <br />
             o
             <br />
             AuthorName
           </p>
         </h1>
-  
+
         <div className="mt-[90%] md:mt-[60%] xl:mt-[30%] "></div>
 
         <div className=" h-screen  bg-[#EBEBEB] xl:bg-white rounded-t-[70px] xl:rounded-t-[20px] mt-[80px] xl:w-[95%] xl:ml-[2.5%]">
@@ -164,8 +140,10 @@ const MyMangas = () => {
                     color={each.category_id.color}
                     hover={each.category_id.hover}
                   />
-                ))}
-              </div>
+                )
+                )}
+               
+              </div>  
             </>
           )}
 
@@ -196,6 +174,7 @@ const MyMangas = () => {
             )}
           </div>
         </div>
+        <Footer />
       </main>
     </>
   );

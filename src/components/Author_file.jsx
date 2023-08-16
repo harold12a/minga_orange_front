@@ -15,7 +15,9 @@ export default function Author_file() {
     //const [author, setauthor] = useState({})//
     const dispatch = useDispatch()
     const store = useSelector(store => store)
+    // console.log(store);
     const profile = store.authors.profile
+    // console.log(profile);
     useEffect(
         () => {
             if (!profile?.name){ 

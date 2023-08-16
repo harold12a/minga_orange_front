@@ -1,4 +1,7 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import apiUrl from "../../apiUrl"
+import header from "../../header"
 
 const saveMangasNews = createAction(
     'saveMangasNews',
@@ -22,12 +25,58 @@ const saveMangaDetail = createAction('saveMangaDetail', obj => {
 const data = createAction('save_checks', obj => {
     return { payload: { checks: obj.checks } }
 })
+const readManga = createAsyncThunk(
+    'readManga', async (obj) => {
+        
+        try {
+            console.log(obj);
+            let manga = await axios(apiUrl + `mangas?page=${obj.page}&category_id=${obj.checks.join(",")}` , header())
+            console.log(manga.data.response);
+
+            return {
+                mangas : manga.data.response,
+                next : manga.data.response,
+                prev : manga.data.response
+            }
+
+        } catch (error) {
+            console.log(error)
+            return{
+                mangas : [],
+                next: null,
+                prev: null
+            }
+        }
+
+    }
+
+)
+
+const destroyManga = createAsyncThunk(
+    "destroyMnaga",
+    async (obj) => {
+
+        try {
+            let one = await axios.delete(apiUrl + "mangas/" + obj.manga_id, header());
+            console.log(one.data.response);
+            return {
+                id_to_delete: one.data.response
+            };
+        } catch (error) {
+            console.error("Error al realizar la petición:", error);
+        }
+        
+    }
+)
+
 
 const mangasActions = {
     saveMangasNews,
     save_title,
     saveMangaDetail,
-    data
+    data,
+    readManga,
+    destroyManga
 }
 
 export default mangasActions
