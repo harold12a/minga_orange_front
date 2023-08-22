@@ -7,9 +7,8 @@ const { saveManga } = mangaAction
 
 const initialState = {
     manga: {},
-    mangas: [], //comments es un array de objetos con 4 ids
-    next: null,
-    prev: null,
+    mangas: {}, //manga es un objeto con los array x categoria
+    mangasByCategory :[]
 }
 
 const mangaReducer = createReducer(
@@ -28,21 +27,30 @@ const mangaReducer = createReducer(
         (state, action) => {
             let newState = {
                 ...state,
-                mangas: action.payload.mangas,
-                next: action.payload.next,
-                prev: action.payload.prev,
+                mangas: action.payload.mangas,    
+                mangasByCategory : Object.entries(action.payload.mangas) 
             }
+            // console.log(newState);
             return newState
         }
     ).addCase(
             destroyManga.fulfilled,
             (state, action) => {
                 let newState = {
-                    ...state,
-                    mangas: state.mangas.filter(each =>
-                        each._id !== action.payload.id_to_delete
-                    )
+                    ...state, 
+                    mangas:  state.mangas[action.payload.category_to_filter].filter(element =>{
+                        console.log(element._id);
+                        console.log(action.payload.id_to_delete);
+                      return (element._id   !== action.payload.id_to_delete)        
+                      })
                 }
+                console.log(newState.mangas);
+                console.log(newState.mangasByCategory);
+                newState.mangasByCategory = Object.entries(newState.mangas)
+                console.log(newState.mangas);
+                console.log(newState.mangasByCategory);
+               
+                
                 return newState
             }
         )

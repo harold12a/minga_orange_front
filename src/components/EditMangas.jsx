@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { Link as Anchor } from "react-router-dom";
 import { RiCompass4Line, RiAddCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch} from "react-redux";
-import commentsActions from "../store/actions/mangas";
+
 import { useEffect } from "react";
 import EditModal from "../components/EditModal";
 import Swal from "sweetalert2";
+import mangasActions from "../store/actions/mangas";
 
-const { readManga, destroyManga } = commentsActions;
-const EditMangas = ({ title, cover_photo, type, color = "blanco", hover }) => {
+
+const { readManga, destroyManga } = mangasActions;
+
+const EditMangas = ({ category, manga_id, title, cover_photo, type, color = "blanco", hover }) => {
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(readManga());
-  }, []);
-
 
   // modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -53,7 +52,7 @@ const EditMangas = ({ title, cover_photo, type, color = "blanco", hover }) => {
               <div className=" mt-2 pl-6 xl:mt-[20%]">
                 <Anchor
                 className=" mr-2  bg-[#8883F0] text-[#2c287a]  pr-[15px]   pl-[15px] md:pl-[26px] pt-2 pb-2  mx-[0%] xl:mx-[2%]   md:h-[45px] rounded-[50000px] text-[15px] md:text-[20px]"
-                onClick={openModal} 
+                onClick={openModal}
                 >
                   Edit
                 </Anchor>
@@ -74,13 +73,12 @@ const EditMangas = ({ title, cover_photo, type, color = "blanco", hover }) => {
                   }).then((result) => {
                     if (result.isConfirmed) {
                       //realizar la eliminación
-                      dispatch(destroyManga()); 
+                      dispatch(destroyManga({manga_id, category})); 
                       console.log('elimnado');
                     }
                   });
                 }}
 
-               // onClick={()=>dispatch(destroyManga({}))} 
                 >
                   Delete
                 </Anchor>
