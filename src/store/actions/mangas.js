@@ -53,7 +53,7 @@ const destroyManga = createAsyncThunk(
     async (obj) => {
         // console.log(obj);
         try {
-            // let one = await axios.delete(apiUrl + "mangas/" + obj.manga_id, header());
+            let one = await axios.delete(apiUrl + "mangas/" + obj.manga_id, header());
 
             // console.log(one.data.response);
             return {
