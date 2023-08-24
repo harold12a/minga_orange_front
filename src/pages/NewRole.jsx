@@ -1,63 +1,81 @@
-import React from "react";
-import { Link as Anchor } from "react-router-dom";
+import newRole from "../assets/images/NewRole.png";
+import logo from "../assets/images/Frame 34648.png";
+import vector from "../assets/images/Vector.png";
+import authorRole from "../assets/images/authorRole.png";
+import companyRole from "../assets/images/companyRole.png"
+import { useNavigate } from "react-router-dom";
 
 export default function NewRole() {
+  const navigate = useNavigate()
+  const author = () => {
+    setTimeout(() => navigate("/author-form"), 1000)
+  }
+  const company = () => {
+    setTimeout(() => navigate("/cia-form"), 1000)
+  }
 
   return (
-    <main className="flex w-full min-h-screen items-center justify-between">
-      <div className="flex flex-col md:absolute md:top-0 md:right-[50%] justify-center items-center h-screen w-full md:w-[50%]">
-      <p className="font-Roboto text-[#4338CA] text-[12px] mb-[12px] text-center p-2">
-          Change role to
-        </p>
-      <img src="../../src/assets/images/Frame 34648.png" alt="frame" className="w-[160px]" />
-   
-     <div>
-        <p className="font-bold text-[#4338CA] text-[12px] mt-[12px] text-center p-2 border-2 border-black rounded-lg px-16 py-4">
-             Join as an Author!{" "}
-             <Anchor to='/singin' className="">
-                  <input id="horizontal-list-radio-passport" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
-                  <label for="horizontal-list-radio-passport" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-             </Anchor> 
-            <div class="flex flex-row-reverse md:mt-2 lg:mt-0">
-            <p class="mt-1 text-sm font-medium text-[#4338CA] md:mt-2">I´m a reader writing a manga </p>
-            <span class="z-0 ml-px inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#E0E5F2] text-xs text-navy-700 ">+5</span><span class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-              <img class="h-full w-full rounded-full object-cover" src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar1.eeef2af6dfcd3ff23cb8.png" alt=""/>
-           </span>
-           <span class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-              <img class="h-full w-full rounded-full object-cover" src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar2.5692c39db4f8c0ea999e.png" alt=""/>
-           </span>
-           <span class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-             <img class="h-full w-full rounded-full object-cover" src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar3.9f646ac5920fa40adf00.png" alt=""/>
-           </span>
-      </div>  
-        </p>
-      </div>
-      <p className="font-bold text-[#4338CA] text-[12px] mt-[30px] text-center p-2 border-2 border-black rounded-lg px-1 py-4">
-             Join as a Company!{" "}
-             <Anchor to='/singin' className="">
-                  <input id="horizontal-list-radio-passport" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
-                  <label for="horizontal-list-radio-passport" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-             </Anchor> 
-            <div class="flex flex-row-reverse md:mt-2 lg:mt-0 px-2">
-            <p class="mt-1 text-sm font-medium text-[#4338CA] md:mt-2">I´m a company and I want to publish my comics </p>
-            <span class="z-0 ml-px inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#E0E5F2] text-xs text-navy-700 ">+5</span><span class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-              <img class="h-full w-full rounded-full object-cover" src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar1.eeef2af6dfcd3ff23cb8.png" alt=""/>
-           </span>
-           <span class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-              <img class="h-full w-full rounded-full object-cover" src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar2.5692c39db4f8c0ea999e.png" alt=""/>
-           </span>
-           <span class="z-10 -mr-3 h-8 w-8 rounded-full border-2 border-white">
-             <img class="h-full w-full rounded-full object-cover" src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/avatar3.9f646ac5920fa40adf00.png" alt=""/>
-           </span>
-      </div>  
-        </p>
-      </div>      
+    <main className="w-full min-h-screen flex justify-center bg-white pb-[0px]">
+      <div className="w-1/2 flex flex-col items-center justify-center ">
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-[#4338CA] text-[20px]">Change role to</p>
+          <img src={logo} alt="" className="mt-2" />
+        </div>
+        <form action="" className="mt-5 flex flex-col w-full items-center justify-center">
+        
+          <label
+            onClick={author}
+            htmlFor=""
+            className="group flex justify-center items-center w-[80%] rounded-lg hover:cursor-pointer hover:bg-gradient-to-r from-[#4338CA] to-[#4338CA] p-1 border-2"
+          >
+            <input type="radio" name="author" id="" className="hidden" />
+            <div className="bg-white flex p-2 w-full justify-between">
+              <div className="flex w-full">
+                <img src={authorRole} alt="" className="w-[103px] h-[45px]" />
+                <div className="flex flex-col ms-[4%] ">
+                  <p className="font-bold text-[20] text-[#4338CA]">Join as an Author!</p>
+                  <p className="text-[#4338CA]">I'm a reader writting a manga</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center border-2 group-hover:bg-[#4338CA] rounded-full h-[25px] w-[25px]">
+                <img src={vector} className="w-[15px] h-[11px]" alt="" />
+              </div>
+            </div>
+          </label>
+          
       
+          <label
+            onClick={company}
+            htmlFor=""
+            className="group flex mt-5 justify-center items-center w-[80%] rounded-lg hover:cursor-pointer hover:bg-gradient-to-r from-[#4338CA] to-[#4338CA] p-1 border-2"
+          >
+            <input type="radio" name="author" id="" className="hidden" />
+            <div className="bg-white flex p-2 w-full justify-between">
+              <div className="flex w-full">
+                <img src={companyRole} alt="" className="w-[103px] h-[45px]" />
+                <div className="flex flex-col ms-[4%] ">
+                  <p className="font-bold text-[20] text-[#4338CA]">Join as a Company!</p>
+                  <p className="text-[#4338CA]">I'm a company and I want to publish my comics</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center border-2 group-hover:bg-[#4338CA] rounded-full h-[25px] w-[25px]">
+                <img src={vector} className="w-[15px] h-[11px]" alt="" />
+              </div>
+            </div>
+          </label>
+
+        </form>
+      </div>
+
       <img
-        className="hidden md:block md:absolute md:top-0 md:right-0 h-screen w-[50%] object-cover"
-        src="../../src/assets/images/NewRole.png"
-        alt="register"
+        className="hidden lg:block min-h-[924px] max-h-screen w-1/2 object-cover "
+        src={newRole}
+        alt="newRole"
       />
     </main>
   );
-};
+}
+
+

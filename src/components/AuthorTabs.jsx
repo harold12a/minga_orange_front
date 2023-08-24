@@ -12,7 +12,7 @@ export default function AdminTabs() {
       <tbody>
             <tr class="bg-white border-b dark:bg-white-900 dark:border-white-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                    juan carlos
+                    Blue Team
                 </th>
                 <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
                     www.blueteam.com
