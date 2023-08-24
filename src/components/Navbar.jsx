@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState, useEffect } from "react";
 import { RiMenuLine } from "react-icons/ri";
@@ -57,9 +58,9 @@ const Navbar = () => {
     setOptions([
       { to: "/", title: "Home" },
       {to: "/mangas/1", title: "Mangas"},
-      {to: "/mymangas", title: "MyMangas"},
+      {to: "/my-mangas/mangas/1", title: "MyMangas"},
       { to: "/manga-form", title: "New Manga" },
-      { to: "/:manga_id/chapter-form ", title: "New Chapter" },
+      { to: "/chapter-form/:manga_id", title: "New Chapter" },
       /*{ to: '/details-chapter/:_id/:page', title: "Chapters"}, se vincula con manga */
       { to: "/me", title: "Profile" },
       { to: "/pro", title: "AuthorProfile" },
@@ -98,7 +99,7 @@ const Navbar = () => {
           />
           <img
             src="../../src/assets/images/Logo(1) 3.png"
-            alt=""
+            alt="logo"
             className=" top-5  xl:pr-2 "
           />
         </div>

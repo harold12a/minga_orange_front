@@ -11,15 +11,14 @@ import BtnManga from "../components/BtnManga";
 import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 
-
 const { save_title, data } = mangaAction;
 
 const Mangas = () => {
   const inputChecked = useRef();
   const text = useSelector((store) => store.manga.text);
   const checks = useSelector((store) => store.manga.checks);
-console.log(text);
-  console.log(checks);
+  // console.log(text);
+  // console.log(checks);
   // console.log(text);
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
@@ -90,9 +89,9 @@ console.log(text);
   }, []);
   const setCheck = (e) => {
     let checks = Object.values(inputChecked.current)
-      .filter(each => each.checked)
-      .map(each => each.id);
-      console.log(checks);
+      .filter((each) => each.checked)
+      .map((each) => each.id);
+    console.log(checks);
     dispatch(data({ checks }));
   };
 
@@ -162,9 +161,7 @@ console.log(text);
             </p>
           ) : (
             <>
-              {/* <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col xl:justify-center xl:mx-[0%] "> */}
               <div className="xl:grid  grid-rows-2 gap-x-[11%] grid-flow-col  xl:mx-[15%] ">
-       
                 {mangas.map((each) => (
                   <CardManga
                     key={each._id}
@@ -188,10 +185,12 @@ console.log(text);
                   actionBtn(e.target.value);
                 }}
                 className=" bg-black text-green-500  mr-6  pl-[5px] mt-[5%] xl:mt-[10%] w-[80px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]"
-              >prev </button>
+              >
+                prev{" "}
+              </button>
             )}
             {next && (
-<button
+              <button
                 type="button"
                 value={next}
                 onClick={(e) => {
@@ -199,11 +198,12 @@ console.log(text);
                 }}
                 className=" bg-black text-green-500    pl-[5px] mt-[5%] xl:mt-[10%] w-[80px] md:w-[100px] h-[35px] md:h-[45px] rounded-[50000px] text-[12px] md:text-[15px]"
               >
-                next </button>
+                next{" "}
+              </button>
             )}
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </main>
     </>
   );

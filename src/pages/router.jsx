@@ -11,11 +11,11 @@ import EditChapter from "./EditChapter";
 import NotAllowed from "./NotAllowed";
 import MangaDetail from "./MangaDetail";
 import DetailsChapter from "./DetailsChapter";
-import Author from "./Author";
 import AuthorProfile from "./Author_profile";
 import NewRole from "./NewRole";
 import AdminPanel from "./AdminPanel"
 import MyMangas from "./MyMangas";
+import Author from './Author'
 
 
 const router = createBrowserRouter([
@@ -50,12 +50,16 @@ const router = createBrowserRouter([
         let user = JSON.parse(localStorage.getItem("user"))
         return (user.role === 0 || user.role === 3 || user.role === 2) && redirect("/not-allowed")
     }},
+
+      { path: "/chapter-form/:manga_id",element: <ChapterForm />},
+
       { path:'/new-role', element:<NewRole />, loader: async () => {
         let user = JSON.parse(localStorage.getItem("user"))
         return (user.role === 3) && redirect("/not-allowed")
     }},
       { path:'/admin', element:<AdminPanel />},
       { path: "/:manga_id/chapter-form",element: <ChapterForm />,loader: ()=>{
+
         let user = JSON.parse(localStorage.getItem('user'))
          return (user.role === 3 || user.role === 0  ) &&  redirect('/not-allowed')
       }},
@@ -73,7 +77,7 @@ const router = createBrowserRouter([
 
         return (user.online === false) && redirect("/not-allowed")
     }},
-      {path:"/mymangas",element: <MyMangas />, loader: async () => {
+      {path:"/my-mangas/mangas/:page",element: <MyMangas />, loader: async () => {
         let user = JSON.parse(localStorage.getItem("user"))
 
         user ? user = { role: user.role } : user = { role: 0 }
