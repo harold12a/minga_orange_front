@@ -60,25 +60,12 @@ const MyMangas = () => {
 
   const showMessage = () => {
     Swal.fire({
-      icon: "warning",
-      title: "We're sorry!",
+      icon: "success",
+      title: "¡ Welcome !",
       html: `
         <div class="flex flex-col items-center mt-8">
-          <svg
-            class="mx-auto h-16 w-16 text-red-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            ></path>
-          </svg>
-          <h3 class="mt-4 text-center text-red-500 font-semibold text-lg">
+        
+          <h3 class="mt-2 text-center text-red-500 font-semibold text-lg">
             My Mangas
           </h3>
           <p class="mt-2 text-center text-gray-600">

@@ -1,14 +1,8 @@
 import React from "react";
-
-
 const EditChapter = () => {
-
-
     return (
-
         <main className='bg-slate-200 flex absolute w-full h-full items-center justify-between '>
             <div className='hidden xl:block'>
-            <h1 className='flex flex-col-reverse'>hola</h1>
                 <img
                     className='lg:absolute lg:top-[256px] lg:right-[200px] lg:h-[544px] lg:w-[600px]'
                     src="../../src/assets/images/edit_chapter.png"

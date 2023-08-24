@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk} from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiUrl from "../../apiUrl"
 import header from "../../header"
@@ -27,19 +27,19 @@ const data = createAction('save_checks', obj => {
 })
 const readManga = createAsyncThunk(
     'readManga', async (obj) => {
-        
+
         try {
             // console.log("readManga - obj:", obj)
-            let mangas = await axios(apiUrl + 'mangas/me' , header())
+            let mangas = await axios(apiUrl + 'mangas/me', header())
             // console.log(mangas.data.response);
             return {
-                mangas : mangas.data.response,      
+                mangas: mangas.data.response,
             }
 
         } catch (error) {
             console.log(error)
-            return{
-                mangas : [],
+            return {
+                mangas: [],
 
             }
         }
@@ -51,10 +51,10 @@ const readManga = createAsyncThunk(
 const destroyManga = createAsyncThunk(
     "destroyMnaga",
     async (obj) => {
-console.log(obj);
+        // console.log(obj);
         try {
             // let one = await axios.delete(apiUrl + "mangas/" + obj.manga_id, header());
-            
+
             // console.log(one.data.response);
             return {
                 id_to_delete: obj.manga_id, category_to_filter: obj.category
@@ -62,7 +62,24 @@ console.log(obj);
         } catch (error) {
             console.error("Error al realizar la petición:", error);
         }
-        
+
+    }
+)
+
+const updateManga = createAsyncThunk(
+    'updateManga', 
+    async (obj)=>{
+        try {
+             let one = await axios.put(apiUrl + "mangas/" + obj.manga_id, obj.data, header());
+             console.log(one.data.response);
+             console.log(obj.currentCategory)
+            return {
+               
+                id_to_update: one.data.response._id, category_to_map: obj.currentCategory, data: one.data.response
+            } 
+        } catch (error) {
+            console.error("Error ", error)
+        }
     }
 )
 
@@ -73,7 +90,8 @@ const mangasActions = {
     saveMangaDetail,
     data,
     readManga,
-    destroyManga
+    destroyManga,
+    updateManga
 }
 
 export default mangasActions
