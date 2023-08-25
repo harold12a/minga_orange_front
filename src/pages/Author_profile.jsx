@@ -15,7 +15,7 @@ export default function Author_file() {
                 {store.mangas.logo ? (null) : (
                     store.manga.all ? (null) : (<Switch_old_new switc={switc} setSwitc={setSwitc} />)
                 )} 
-                {/* <Switch_old_new switc={switc} setSwitc={setSwitc} /> */}
+                <Switch_old_new switc={switc} setSwitc={setSwitc} />
                 <Author_mangas switc={switc}/> 
             </div>
         </>
