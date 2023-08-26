@@ -1,14 +1,30 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import chapterActions from "../store/actions/chapters";
+import { useDispatch, useSelector } from "react-redux";
 
 const EditChapter = () => {
 
+    const {saveChapters} = chapterActions
+    const{ manga_id } = useParams()
+    const dispatch = useDispatch()
+    const chapter = useSelector(store=>store.chapter)
+    console.log(chapter)
+    //let [chapters, setChapters] = useState([]);
+
+
+    useEffect(
+        () => {
+            dispatch(saveChapters({manga_id}))
+        }
+    )
+    
 
     return (
 
         <main className='bg-slate-200 flex absolute w-full h-full items-center justify-between '>
             <div className='hidden xl:block'>
-            <h1 className='flex flex-col-reverse'>hola</h1>
+            <h1 className='flex flex-col-reverse'></h1>
                 <img
                     className='lg:absolute lg:top-[256px] lg:right-[200px] lg:h-[544px] lg:w-[600px]'
                     src="../../src/assets/images/edit_chapter.png"
