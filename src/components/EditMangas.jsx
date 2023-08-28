@@ -38,7 +38,7 @@ const EditMangas = ({
             <Anchor to={"/chapter-form/:manga_id"}>
               <RiAddCircleLine className="mr-2" />
             </Anchor>
-            <Anchor to={"/edit-chapter"}>
+            <Anchor to={"/edit-chapter/:manga_id"}>
               <RiCompass4Line />
             </Anchor>
           </div>
