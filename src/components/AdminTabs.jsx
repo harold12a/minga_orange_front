@@ -1,114 +1,83 @@
-import Perfil from "../assets/images/Rectangle 10.svg";
-import React from 'react'
+import { useEffect } from "react";
+import AdminAuthor from "../assets/images/user.png"
+import { useDispatch, useSelector } from "react-redux";
+import authorActions from "../store/actions/authors"
 
-export default function AdminTabs() {
-
-
-
+export default function AdminAuthors() {
+  const { saveAuthors, updateActive } = authorActions
+  const dispatch = useDispatch()
+  const activeTrue = useSelector(store => store.authors.authors.active_true)
+  console.log(activeTrue)
+  const activeFalse = useSelector(store => store.authors.authors.active_false)
+  console.log(activeFalse)
+  useEffect(() => {
+    dispatch(saveAuthors())
+  }, [])
+  function handleActive(id,change) {
+    dispatch(updateActive({id,change}))
+  }
   return (
-    <>
-    
-<div class="bg-white shadow border border-gray-100 p-8 text-gray-700 rounded-lg -mx-4 "> 
-      <tbody>
-            <tr class="bg-white border-b dark:bg-white-900 dark:border-white-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                    juan carlos
-                </th>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                    www.blueteam.com
-                </td>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                  <img src={Perfil} />
-                </td>
-                <td class="px-6 py-4">
+    <div className="flex justify-center items-center w-[90%]">
+      <table className="-mt-[5.1px] flex flex-col items-center justify-center w-[80%]">
+        <tbody className="border-t-2 border-[#4338CA] rounded-b-lg w-full">
+          {activeTrue?.map((item, index) => (
+            // console.log(item)
+            <tr key={index} className="w-full" >
+              <th className="border-b-2 border-slate-400 w-1/5"><img src={AdminAuthor} className="ms-7" alt="" /></th>
+              <th className="text-left font-roboto border-b-2 border-slate-400 w-1/5">
+                <p>{item.name + " "}
+                  {item.last_name}</p>
+              </th>
+              {/* <th className="border-b-2 border-slate-400">
+              <p className="md:ms-10 lg:ms-14">{item.createdAt}</p>
+            </th> */}
+              <th className="border-b-2 border-slate-400 w-2/5">
+                <p className="md:ms-10 lg:ms-14">{item.city}</p>
+              </th>
+              <th className="border-b-2 border-slate-400 w-1/5">
+                <img src={item.photo} className="w-[25px] h-[25px] rounded-full md:ms-10 lg:ms-14" alt="" />
+              </th>
+              <th className="border-b-2 border-slate-400 w-1/5">
                 <input
-                  class="mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-[#4338CA] dark:after:bg-white-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                  onChange={() => handleActive(item.user_id,item.active)}
+                  className=" right-0 md:ms-10 lg:ms-14 mr-2 mt-[0] h-4 w-8 appearance-none rounded-full after:absolute after:mt-[1px] after:h-3 after:w-3 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_2px_0_rgb(0_0_0_/_7%),_0_1px_1px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s]   checked:after:absolute  checked:after:mt-[1px] checked:after:ml-[1.0625rem] hover:cursor-pointer dark:bg-neutral-400 dark:after:bg-white dark:checked:bg-[#4338CA] dark:checked:after:bg-white"
                   type="checkbox"
                   role="switch"
-                  id="flexSwitchChecked"
-                  checked />
-                  <label
-                    class="inline-block pl-[0.15rem] hover:cursor-pointer"
-                    for="flexSwitchChecked"
-                    ></label>
-                </td>
-                
+                  defaultChecked={item.active} />
+              </th>
             </tr>
-            <tr class="bg-white border-b dark:bg-white-900 dark:border-white-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                   Red Team
-                </th>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                   www.redteam.com
-                </td>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                  <img src={Perfil} />
-                </td>
-                <td class="px-6 py-4">
+          ))}
+          {activeFalse?.map((item, index) => (
+            // console.log(item)
+            <tr key={index} className="w-full" >
+              <th className="border-b-2 border-slate-400 w-1/5"><img src={AdminAuthor} className="ms-7" alt="" /></th>
+              <th className="text-left font-roboto border-b-2 border-slate-400 w-1/5">
+                <p>{item.name + " "}
+                  {item.last_name}</p>
+              </th>
+              {/* <th className="border-b-2 border-slate-400">
+              <p className="md:ms-10 lg:ms-14">{item.createdAt}</p>
+            </th> */}
+              <th className="border-b-2 border-slate-400 w-2/5">
+                <p className="md:ms-10 lg:ms-14">{item.city}</p>
+              </th>
+              <th className="border-b-2 border-slate-400 w-1/5">
+                <img src={item.photo} className="w-[25px] h-[25px] rounded-full md:ms-10 lg:ms-14" alt="" />
+              </th>
+              <th className="border-b-2 border-slate-400 w-1/5">
                 <input
-                  class="mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-[#4338CA] dark:after:bg-white-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                  onChange={() => handleActive(item.user_id,item.active)}
+                  className=" right-0 md:ms-10 lg:ms-14 mr-2 mt-[0] h-4 w-8 appearance-none rounded-full after:absolute after:mt-[1px] after:h-3 after:w-3 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_2px_0_rgb(0_0_0_/_7%),_0_1px_1px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s]   checked:after:absolute  checked:after:mt-[1px] checked:after:ml-[1.0625rem] hover:cursor-pointer dark:bg-neutral-400 dark:after:bg-white dark:checked:bg-[#4338CA] dark:checked:after:bg-white"
                   type="checkbox"
                   role="switch"
-                  id="flexSwitchChecked"
-                  checked />
-                  <label
-                    class="inline-block pl-[0.15rem] hover:cursor-pointer"
-                    for="flexSwitchChecked"
-                    ></label>
-                </td>
-                
+                  defaultChecked={item.active} />
+              </th>
             </tr>
-            <tr class="bg-white border-b dark:bg-white-900 dark:border-white-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                    Orange Team
-                </th>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                    www.orangeteam.com
-                </td>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                  <img src={Perfil} />
-                </td>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                <input
-                  class="mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-[#4338CA] dark:after:bg-white-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
-                  type="checkbox"
-                  role="switch"
-                  id="flexSwitchChecked"
-                  checked />
-                  <label
-                    class="inline-block pl-[0.15rem] hover:cursor-pointer"
-                    for="flexSwitchChecked"
-                    ></label>
-                </td>
-                
-            </tr>
-            <tr class="bg-white border-b dark:bg-white-900 dark:border-white-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                    Purple Team
-                </th>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                    www.purpleteam.com
-                </td>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                   <img src={Perfil} />
-                </td>
-                <td class="px-6 py-4 bg-white border-b dark:bg-black-900 dark:text-black">
-                <input
-                  class="mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-[#4338CA] dark:after:bg-white-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
-                  type="checkbox"
-                  role="switch"
-                  id="flexSwitchChecked"
-                  checked />
-                  <label
-                    class="inline-block pl-[0.15rem] hover:cursor-pointer"
-                    for="flexSwitchChecked"
-                    ></label>
-                </td>
-                
-            </tr>
-            
+          ))}
         </tbody>
-        </div>
-        </>
+      </table>
+
+    </div>
+
   )
 }
