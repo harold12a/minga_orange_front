@@ -14,20 +14,20 @@ let saveProfile = createAction(
     }
 )
 
-let saveAuthors = createAsyncThunk(
-    'saveAuthors',
+let saveCompanies = createAsyncThunk(
+    'saveCompanies',
     async()=>{
         try {
             
-            let res = await axios(apiUrl + "authors", header())
+            let res = await axios(apiUrl + "companies", header())
             return {
-                authors:res.data.response
+                companies:res.data.response
             }
-            // .then(res => setAuthors(res.data.response)).catch(error => console.log(error)); 
+            // .then(res => setcompanies(res.data.response)).catch(error => console.log(error)); 
         } catch (error) {
             console.log(error)
             return {
-                authors:{}
+                companies:{}
              }
         }
         
@@ -38,7 +38,7 @@ let updateActive = createAsyncThunk(
     'updateActive',
     async(obj)=>{
         try {
-            let res = await axios.put(apiUrl+ `auth/role/author/${obj.id}`,null,header())
+            let res = await axios.put(apiUrl+ `auth/role/company/${obj.id}`,null,header())
             console.log(res.data.response)
             return {
                 id:obj.id,
@@ -57,10 +57,10 @@ let updateActive = createAsyncThunk(
         }
     }
 )
-const authorActions = {
+const companyActions = {
     saveProfile,
-    saveAuthors,
+    saveCompanies,
     updateActive
 }
 
-export default authorActions
+export default companyActions
