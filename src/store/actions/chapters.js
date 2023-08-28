@@ -19,6 +19,37 @@ let saveChapters = createAsyncThunk('saveChapters', async (obj) => {
     }
 
 });
+
+let updateChapter = createAsyncThunk(
+    'updateChapter',
+    async(id, data, category) =>{
+        try {
+            let res = await axios.put(`${apiUrl}chapters/${id}`,data, header())
+            return{
+             id, res: res.data.response, 
+             category
+            }
+        } catch (error) {
+            console.log(error)
+            return{id:""}
+        }
+    }
+)
+
+const destroyChapter = createAsyncThunk(
+    "destroyChapter",
+    async ({id, category}) =>{
+        try {
+            await axios.delete(`${apiUrl}/chapters/${id}`,header());
+            return {id, category};
+        } catch (error) {
+            console.log(error);
+            return{ id: "" }
+        }
+    }
+
+)
+
 const save_data = createAction(
     "save_data",
     (obj) => {
@@ -33,7 +64,9 @@ const save_data = createAction(
 
 const chapterActions = {
     save_data,
-    saveChapters
+    saveChapters,
+    updateChapter,
+    destroyChapter
 }
 
 export default chapterActions

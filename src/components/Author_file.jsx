@@ -15,13 +15,15 @@ export default function Author_file() {
     //const [author, setauthor] = useState({})//
     const dispatch = useDispatch()
     const store = useSelector(store => store)
+    // console.log(store);
     const profile = store.authors.profile
+    // console.log(profile);
     useEffect(
         () => {
             if (!profile?.name){ 
-            let header = { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
+            let header = { header: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
              // si y solo si no existen los datos del author en el store de redux realizo la peticion correspondiente para obtener los datos
-                    axios(apiUrl + "authors/me", header )
+                    axios(apiUrl + "authors", header )
                     .then(res => {
                         // setauthor(res.data.response.profile)
                         //Setiamos variable de estado local
