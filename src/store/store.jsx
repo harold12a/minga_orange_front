@@ -12,7 +12,7 @@ const store = configureStore({
     mangas: mangasReducer,
     manga: mangasnewsReducer , 
     manga_upd_del : mangaReducer,
-    chapter: chapterReducer,
+    chapters: chapterReducer,
     mangasnews: mangasnewsReducer,
     authors:authorReducer,
    

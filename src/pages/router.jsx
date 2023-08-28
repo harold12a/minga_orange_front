@@ -85,7 +85,11 @@ const router = createBrowserRouter([
         return (user.role === 0 || user.role === 3) && redirect("/")
     }}, 
       //chapters
-      {path:"/edit-chapter",element:<EditChapter/>},
+      {path:"/edit-chapter/:manga_id",element: <EditChapter />//, loader: async () => {
+        //let user = JSON.parse(localStorage.getItem('user'))
+       // console.log(user)
+       // return (user.role === 1 || user.role === 2 ) &&  redirect('/not-allowed')}
+    },
       {path:"/details-chapter/:id/:page",element: <DetailsChapter/>,loader: () =>{
         let user = JSON.parse(localStorage.getItem('user'))
         console.log(user);
