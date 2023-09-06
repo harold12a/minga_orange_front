@@ -49,7 +49,7 @@ export default function Author() {
   };
   return (
   <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center ">
-   <div className=" bg-no-repeat bg-cover  absolute lg:bg-[10%] h-screen w-full lg:h-[62%] xl:bg-[url('./assets/images/authorprofile.png')]"> 
+   <div className=" bg-no-repeat bg-cover  absolute lg:bg-[10%] h-screen w-full lg:h-[62%] xl:bg-[url('/assets/images/authorprofile.png')]"> 
     <h1 className="bg-cover-repeat absolute h-screen w-full lg:h-[62%] xl:bg-mt-[220px] font-bold md:top-[120px] xl:text-[65px] hidden lg:block ">
       Profile
     </h1>
