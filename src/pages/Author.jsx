@@ -1,8 +1,7 @@
-
 import { useRef } from "react";
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-// import profile1 from "/assets/images/Profile.png";
+import profile1 from "/assets/images/pro.png";
 import apiUrl from "../apiUrl";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -55,8 +54,8 @@ export default function Author() {
       Profile
     </h1>
     <div className=" bg-white flex flex-col rounded-t-lg  xl:absolute xl:right-[2%] xl:top-[85%] items-center w-full lg:w-[96%] sm:w-[96%]   ">
-        {/* <img className="w-5/5 lg:w-48   flex flex-col rounded-t-lg xl:absolute xl:right-[170px]  xl:top-[12px]  sm:w-[98px] my-2 mx-auto mt-[95px] xl:mr-[200px] " 
-        src={profile1} alt="img-profile" /> */}
+        <img className="w-5/5 lg:w-48   flex flex-col rounded-t-lg xl:absolute xl:right-[170px]  xl:top-[12px]  sm:w-[98px] my-2 mx-auto mt-[95px] xl:mr-[200px] " 
+        src={profile1} alt="img-profile" />
         <h1 className="text-[black] lg:w-48 flex flex-col rounded-t-lg xl:absolute xl:right-[160px] xl:mr-[200px] xl:top-[262px] sm:mt-[20px]">New Author</h1>
         <h2 className="text-[black] lg:w-48 flex flex-col rounded-t-lg xl:absolute xl:right-[160px] xl:mr-[200px] xl:top-[302px]">Caseros, Buenos Aires</h2>
         <h3 className="text-[black] lg:w-48 flex flex-col rounded-t-lg xl:absolute xl:right-[160px] xl:mr-[200px] xl:top-[326px]">16/02/2000</h3>

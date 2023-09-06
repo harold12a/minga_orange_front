@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import profile1 from "/assets/images/Profile.png";
+import profile1 from "/assets/images/pro.png";
 import apiUrl from "../apiUrl";
 import axios from "axios";
 import ButtonSend from "../components/ButtonSend";
