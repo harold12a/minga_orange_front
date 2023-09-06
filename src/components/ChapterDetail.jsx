@@ -1,5 +1,5 @@
-import imageSrc from "../../src/assets/images/Frame588.png";
-import icon_comment from "../assets/images/icon_comment.svg";
+import imageSrc from "/assets/images/Frame588.png";
+import icon_comment from "/assets/images/icon_comment.svg";
 import { useEffect, useState } from 'react';
 import apiURL from '../apiUrl.js';
 import axios from 'axios';

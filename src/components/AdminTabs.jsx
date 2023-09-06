@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import AdminAuthor from "../assets/images/user.png"
+import AdminAuthor from "/assets/images/user.png"
 import { useDispatch, useSelector } from "react-redux";
 import authorActions from "../store/actions/authors"
 

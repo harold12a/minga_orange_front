@@ -7,10 +7,10 @@ module.exports = {
   theme: {
       extend: {
         backgroundImage:{
-          'main-home':'url(../../src/assets/branden-sk.jpg',
-          'nav-home':'url(../../src/assets/images/Nav mobile.png',
-          'desktop':'url(../../src/assets/branden-desktop.png',
-          'main-manga':'url(../../src/assets/images/pexels-lisa.jpg)'
+          'main-home':'url(/assets/branden-sk.jpg',
+          'nav-home':'url(/assets/images/Nav mobile.png',
+          'desktop':'url(/assets/branden-desktop.png',
+          'main-manga':'url(/assets/images/pexels-lisa.jpg)'
         },
         colors:{
           primary:{

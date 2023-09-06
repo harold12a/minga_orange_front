@@ -4,8 +4,8 @@ import AdminTabs from "../components/AdminTabs";
 import AuthorTabs from "../components/AuthorTabs";
 
 
-import fondo from "../assets/images/AdminPanel.png"
-import barra from "../assets/images/barra.png"
+import fondo from "/assets/images/AdminPanel.png"
+import barra from "/assets/images/barra.png"
 import ToggleSwitchAdmin from "../components/ToggleSwitchAdmin";
 
 export default function AdminPanel() {

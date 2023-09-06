@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import apiUrl from '../apiUrl';
 import axios from 'axios';
-import cake from '../assets/images/cake.svg';
+import cake from '/assets/images/cake.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import location from '../assets/images/location-marker.svg';
-import edit from '../assets/images/pencil_alt.svg';
+import location from '/assets/images/location-marker.svg';
+import edit from '/assets/images/pencil_alt.svg';
 import authorActions from '../store/actions/authors';
 
 const { saveProfile } = authorActions

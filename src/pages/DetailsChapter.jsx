@@ -91,7 +91,7 @@ const DetailsChapter = () => {
                 />
                 <h4 className="">  {store.chapter.order} </h4>
                 <img className="absolute mt-[90px] w-[50px] ml-48 lg:absolute lg:w-[50px] lg:ml-[890px] lg:mt-[100px] "
-                    src="../../src/assets/images/iconComent.png" />
+                    src="/assets/images/iconComent.png" />
             </div>
         </nav>
 

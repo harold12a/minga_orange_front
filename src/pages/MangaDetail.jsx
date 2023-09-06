@@ -8,11 +8,11 @@ import ChapterDetail from "../components/ChapterDetail";
 import MangaDetails from "../components/MangaDetails.jsx";
 import TitleChapter from "../components/TitleChapter";
 import mangaAction from "../store/actions/manga";
-import imageSrc from "../../src/assets/images/Frame588.png";
-import iconGood from "../../src/assets/images/bueno.svg";
-import iconBad from "../../src/assets/images/malo.svg";
-import iconOpenVoice from "../../src/assets/images/a.svg";
-import iconLove from "../../src/assets/images/megusta.svg";
+import imageSrc from "/assets/images/Frame588.png";
+import iconGood from "/assets/images/bueno.svg";
+import iconBad from "/assets/images/malo.svg";
+import iconOpenVoice from "/assets/images/a.svg";
+import iconLove from "/assets/images/megusta.svg";
 const { saveManga } = mangaAction;
 
 const MangaDetail = () => {

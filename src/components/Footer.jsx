@@ -15,7 +15,7 @@ const Footer = () => {
       <footer>
         <div className="bg-white mt-[80%]   xl:hidden  md:flex md:mr-[50%] "> 
           <img
-            src="../../src/assets/images/Frame 34648.png"
+            src="/assets/images/Frame 34648.png"
             alt=""
             className=" mx-auto pb-[50px] "
           />
@@ -36,7 +36,7 @@ const Footer = () => {
         </div>
         <div className="bottom-0   hidden xl:block overflow-x-hidden    ">
           <img
-            src="../../src/assets/images/Rectangle14.png"
+            src="/assets/images/Rectangle14.png"
             alt=""
             className="mx-auto w-[90%]"
             style={{ borderRadius: "0 0 140% 140%" }}
@@ -44,7 +44,7 @@ const Footer = () => {
 
           <div className=" h-[200px] mx-auto w-full  mb-[100px]    overflow-hidden ">
             <img
-              src="../../src/assets/images/wave_white (1).svg"
+              src="/assets/images/wave_white (1).svg"
               alt=""
               className="absolute mt-[-240px] "
             />
@@ -56,7 +56,7 @@ const Footer = () => {
                 mangas
               </a>
               <img
-                src="../../src/assets/images/Frame 34648.png"
+                src="/assets/images/Frame 34648.png"
                 alt=""
                 className=" absolute mx-auto  left-[45%] mt-[7%]   "
               />

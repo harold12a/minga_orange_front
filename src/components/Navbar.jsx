@@ -98,7 +98,7 @@ const Navbar = () => {
             className="w-8 h-8 fill-current text-indigo-700 xl:text-black  "
           />
           <img
-            src="../../src/assets/images/Logo(1) 3.png"
+            src="/assets/images/Logo(1) 3.png"
             alt="logo"
             className=" top-5  xl:pr-2 "
           />

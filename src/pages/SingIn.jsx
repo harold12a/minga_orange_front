@@ -47,12 +47,12 @@ const SingIn = () => {
     <main className="flex w-full h-full items-center justify-between ">
       <img
         className="hidden md:block md:absolute md:top-0 md:left-0 h-screen w-[50%] object-cover "
-        src="../../src/assets/images/SingIn.png"
+        src="/assets/images/SingIn.png"
         alt="signin"
       />
       <div className="flex flex-col md:absolute md:top-0 md:left-[50%] justify-center items-center h-screen w-full md:w-[50%] ">
         <img
-          src="../../src/assets/images/Frame 34648.png"
+          src="/assets/images/Frame 34648.png"
           alt="frame"
           className="w-[160px]"
         />
@@ -94,7 +94,7 @@ const SingIn = () => {
               placeholder="Sign in with Google"
             />
             <img
-              src="../../src/assets/images/Google.png"
+              src="/assets/images/Google.png"
               alt="google"
               className="absolute right-[310px] top-[24px] w-[22px] hidden lg:block"
             />

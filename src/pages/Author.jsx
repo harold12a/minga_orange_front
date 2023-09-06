@@ -29,7 +29,7 @@
 import { useRef } from "react";
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import profile1 from "../assets/images/profile.png";
+import profile1 from "/assets/images/profile.png";
 import apiUrl from "../apiUrl";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -77,7 +77,7 @@ export default function Author() {
   };
   return (
   <div className="text-center text-[#FFFFFF] font-Roboto not-italic flex-none order-none flex-grow-0 items-center ">
-   <div className=" bg-no-repeat bg-cover  absolute lg:bg-[10%] h-screen w-full lg:h-[62%] xl:bg-[url('.../../src/assets/images/authorprofile.png')]"> 
+   <div className=" bg-no-repeat bg-cover  absolute lg:bg-[10%] h-screen w-full lg:h-[62%] xl:bg-[url('./assets/images/authorprofile.png')]"> 
     <h1 className="bg-cover-repeat absolute h-screen w-full lg:h-[62%] xl:bg-mt-[220px] font-bold md:top-[120px] xl:text-[65px] hidden lg:block ">
       Profile
     </h1>

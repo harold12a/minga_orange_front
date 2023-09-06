@@ -1,8 +1,8 @@
-import newRole from "../assets/images/NewRole.png";
-import logo from "../assets/images/Frame 34648.png";
-import vector from "../assets/images/Vector.png";
-import authorRole from "../assets/images/authorRole.png";
-import companyRole from "../assets/images/companyRole.png"
+import newRole from "/assets/images/NewRole.png";
+import logo from "/assets/images/Frame 34648.png";
+import vector from "/assets/images/Vector.png";
+import authorRole from "/assets/images/authorRole.png";
+import companyRole from "/assets/images/companyRole.png"
 import { useNavigate } from "react-router-dom";
 
 export default function NewRole() {

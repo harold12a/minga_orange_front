@@ -43,7 +43,7 @@ const Resgister = () => {
   return (
     <main className="flex w-full min-h-screen items-center justify-between">
       <div className="flex flex-col md:absolute md:top-0 md:right-[50%] justify-center items-center h-screen w-full md:w-[50%]">
-      <img src="../../src/assets/images/Frame 34648.png" alt="frame" className="w-[160px]" />
+      <img src="/assets/images/Frame 34648.png" alt="frame" className="w-[160px]" />
         <p className="font-semibold text-[32px] text-center">Welcome!</p>
         <p className="font-semibold text-[12px] mb-[12px] text-center p-2">
           Discover manga and comics, track your progress, have fun, read manga.
@@ -98,7 +98,7 @@ const Resgister = () => {
               placeholder="Sign in with Google"
             />
             <img
-              src="../../src/assets/images/Google.png"
+              src="/assets/images/Google.png"
               alt="google"
               className="absolute right-[310px] top-[24px] w-[22px] hidden lg:block"
             />
@@ -121,7 +121,7 @@ const Resgister = () => {
       </div>
       <img
         className="hidden md:block md:absolute md:top-0 md:right-0 h-screen w-[50%] object-cover"
-        src="../../src/assets/images/register.png"
+        src="/assets/images/register.png"
         alt="register"
       />
     </main>

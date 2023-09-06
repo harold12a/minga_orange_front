@@ -21,7 +21,7 @@ const CardManga = ({ title, cover_photo, type, color, manda_id  }) => {
             <img
               className=" w-[140px] xl:w-[300px]  md:w-[250px]  h-[140px]  md:h-[170px]  xl:h-[250px] rounded-l-[45%] object-cover rounded-r-[10%]  "
               src={cover_photo}
-              // src={"../../src/assets/images/card-naruto.png"}
+              // src={"/assets/images/card-naruto.png"}
               alt="img"
             />
           </div>
